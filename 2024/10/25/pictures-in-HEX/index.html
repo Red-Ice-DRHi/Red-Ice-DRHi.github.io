@@ -6,20 +6,22 @@
   
   <title>十六进制下的图片 | RedIce&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="根据任务内容，我开始用16进制编辑器查看图片文件，尝试研究计算机眼里的图片  我利用Windows画图制作了这么一张简单的3*4的图片。 里面的颜色都是由0或255组成，便于研究">
+  <meta name="description" content="根据任务内容，我开始用wxMEdit查看图片文件，尝试研究计算机眼里的图片  我利用Windows画图制作了这么一张简单的3*4的图片。 里面的颜色都是由0或255组成，便于研究">
 <meta property="og:type" content="article">
 <meta property="og:title" content="十六进制下的图片">
 <meta property="og:url" content="https://red-ice-drhi.github.io/2024/10/25/pictures-in-HEX/index.html">
 <meta property="og:site_name" content="RedIce&#39;s Blog">
-<meta property="og:description" content="根据任务内容，我开始用16进制编辑器查看图片文件，尝试研究计算机眼里的图片  我利用Windows画图制作了这么一张简单的3*4的图片。 里面的颜色都是由0或255组成，便于研究">
+<meta property="og:description" content="根据任务内容，我开始用wxMEdit查看图片文件，尝试研究计算机眼里的图片  我利用Windows画图制作了这么一张简单的3*4的图片。 里面的颜色都是由0或255组成，便于研究">
 <meta property="og:locale">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-25%20183557.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/opng.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-28%20210932.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/filter-functions.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755-1730142005375-4.png">
 <meta property="article:published_time" content="2024-10-25T10:20:41.000Z">
-<meta property="article:modified_time" content="2024-10-28T16:22:25.131Z">
+<meta property="article:modified_time" content="2024-10-28T20:13:51.985Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
@@ -103,7 +105,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>根据任务内容，我开始用16进制编辑器查看图片文件，尝试研究计算机眼里的图片</p>
+        <p>根据任务内容，我开始用wxMEdit查看图片文件，尝试研究计算机眼里的图片</p>
 <p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png" alt="神奇东西"></p>
 <p>我利用Windows画图制作了这么一张简单的3*4的图片。</p>
 <p>里面的颜色都是由0或255组成，便于研究</p>
@@ -419,16 +421,168 @@
 <p>很明显，这一行是白色，白色，白色，均不透明。与原图相符</p>
 <p>至此，四行像素我们都解析完毕了，均与原图相符。之后4个字节的CRC校验，数据块结束</p>
 <p>（这一部分真的折腾了我好几天QAQ）</p>
-<h4 id="6-IEND"><a href="#6-IEND" class="headerlink" title="6.IEND"></a>6.IEND</h4><p>目光跳过4个字节的IDAT的CRC校验，来到了这个文件的最后12个字节</p>
-<p>PNG文件的最后12个字节一定是0x[00 00 00 00 49 45 4E 44 AE 42 60 82]</p>
+<h4 id="6-IEND"><a href="#6-IEND" class="headerlink" title="6.IEND"></a>6.IEND</h4><p>PNG文件的最后12个字节一定是0x[00 00 00 00 49 45 4E 44 AE 42 60 82]</p>
 <p>我们仍可以用数据块的角度去看待它</p>
 <p>0x[00 00 00 00]说明这个数据块实际内容长度为0。这个数据块的作用是标志文件结束，自然不需要什么内容</p>
 <p>0x[49 45 4E 44]说明这个数据块是IEND</p>
 <p>那既然实际内容长度为0，那就是没有实际内容</p>
 <p>所以接下去的4个字节是CRC校验。因为前面的8个字节固定，所以CRC校验的4个字节也是固定的</p>
 <p>就能知道PNG一定是以这12个字节结束</p>
-<p>至此，PNG就算这么粗略地分析完成了</p>
-<p>未完待续———</p>
+<p>至此，PNG部分就算结束</p>
+<h3 id="2-BMP"><a href="#2-BMP" class="headerlink" title="2.BMP"></a>2.BMP</h3><p>同样一张图片，用Windows画图将其转换为BMP格式，用wxMEdit打开它。同样的，研究其数据结构</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755.png" alt="BMP"></p>
+<p>对其做上标记，使其更好阅读</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755-1730142005375-4.png" alt="BMP注释"></p>
+<p>我用方括号括出不同的数据块，在其中用横线或是尖括号标出其中的子块（触摸板画图不好操控，能看就行）</p>
+<p>BMP的阅读方式比较怪，但总结一下就是</p>
+<p><strong>字节外从右往左，字节内从左往右</strong></p>
+<p>例如[AB CD]在BMP中要读作是[CD AB]</p>
+<p>(这玩意我瞪了半天才明白，因为我发现像素一直对不上)</p>
+<p><strong>但不同的数据块我们仍然以从左往右的顺序进行分析</strong></p>
+<p>我们先将这个BMP分成三个大块</p>
+<p>1.文件头(bit map file header)</p>
+<p>2.位图信息头(bitmap information)</p>
+<p>3.位图数据(pixel data)</p>
+<p>（有些BMP文件还会出现调色板(color palette)数据块，但这里没有，我们先略过）</p>
+<h4 id="1-文件头"><a href="#1-文件头" class="headerlink" title="1.文件头"></a>1.文件头</h4><p>这一部分是BMP的固有开头，占14字节，其中记录了这些信息（蓝色方括）</p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">大小（字节）</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">FileType(文件类型)</td>
+<td align="center">2</td>
+<td align="center">描述其文件类型，固定为[42 4D]，对应ASCII中的BM</td>
+</tr>
+<tr>
+<td align="center">FileSize(文件大小)</td>
+<td align="center">4</td>
+<td align="center">记录文件大小，单位为KB，文件中为[66 00 00 00]即0x66&#x3D;102KB（查看文件属性，这个文件确实大小为102KB）</td>
+</tr>
+<tr>
+<td align="center">Reserved(保留位)</td>
+<td align="center">2</td>
+<td align="center">2位保留位预留给图片渲染应用，初始化必须为0（说实话我也不懂这是什么意思，但查到的资料就是这么说的）</td>
+</tr>
+<tr>
+<td align="center">Reserved(保留位)</td>
+<td align="center">2</td>
+<td align="center">同上</td>
+</tr>
+<tr>
+<td align="center">PixelDataOffset(从头到位图数据的偏移)</td>
+<td align="center">4</td>
+<td align="center">例图中的值为0x36&#x3D;54，即记录在位图数据开始前一共有多少个字节（你可以看一下，位图数据的第一个字节是第3行第7个（紫色方括号），也就是在位图数据开始前有0x36个字节）</td>
+</tr>
+</tbody></table>
+<p>文件头数据块就到此结束</p>
+<h4 id="2-位图信息头"><a href="#2-位图信息头" class="headerlink" title="2.位图信息头"></a>2.位图信息头</h4><p>（橙色方括）</p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">大小（字节）</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HeaderSize</td>
+<td align="center">4</td>
+<td align="center">信息头大小，单位是字节，例图中为0x28&#x3D;40字节</td>
+</tr>
+<tr>
+<td align="center">ImageWidth</td>
+<td align="center">4</td>
+<td align="center">描述图片宽度，单位是像素，例图中为0x03&#x3D;3符合事实</td>
+</tr>
+<tr>
+<td align="center">ImageHeight</td>
+<td align="center">4</td>
+<td align="center">描述图片高度，单位是像素，例图中为0x04&#x3D;4符合事实</td>
+</tr>
+<tr>
+<td align="center">Planes</td>
+<td align="center">2</td>
+<td align="center">目标设备说明颜色平面数，总被设置为1</td>
+</tr>
+<tr>
+<td align="center">BitsPerPixel</td>
+<td align="center">2</td>
+<td align="center">定义每个像素需要多少个bit储存，一般有1、2、4、8、16、24、32这几种。例图中为0x18&#x3D;24，因为三原色中每种颜色是0-255占8bit，一个像素就需要3*8&#x3D;24bit。（这里没有透明度了）</td>
+</tr>
+<tr>
+<td align="center">Compression</td>
+<td align="center">4</td>
+<td align="center">图像的压缩类型，最常用的就是0（BI_RGB），表示不压缩（再压缩我又得折腾半年）</td>
+</tr>
+<tr>
+<td align="center">ImageSize</td>
+<td align="center">4</td>
+<td align="center">位图数据的大小，当用BI_RGB格式时，可以设置为0。例图中是0x30&#x3D;48符合其大小</td>
+</tr>
+<tr>
+<td align="center">XpixelsPerMeter</td>
+<td align="center">4</td>
+<td align="center">水平分辨率，单位是像素&#x2F;米，有符号整数。例图为0x1274&#x3D;4724</td>
+</tr>
+<tr>
+<td align="center">YpixelsPerMeter</td>
+<td align="center">4</td>
+<td align="center">垂直分辨率，单位是像素&#x2F;米，有符号整数.例图为0x1274&#x3D;4724</td>
+</tr>
+<tr>
+<td align="center">TotalColors</td>
+<td align="center">4</td>
+<td align="center">位图使用的调色板中的颜色索引数，为0说明使用所有</td>
+</tr>
+<tr>
+<td align="center">ImportantColors</td>
+<td align="center">4</td>
+<td align="center">对图像显示有重要影响的颜色索引数，为0说明都重要</td>
+</tr>
+</tbody></table>
+<p>到此，位图信息头结束</p>
+<h4 id="3-位图数据"><a href="#3-位图数据" class="headerlink" title="3.位图数据"></a>3.位图数据</h4><p>我用紫色方括号括了起来</p>
+<p>为什么里面会有尖括号和划线之分呢？难道像素数据不都一个样吗？</p>
+<p>因为BMP存在在一个机制</p>
+<p>比特填充(bit padding)</p>
+<p>BMP扫描引擎的最小单位是4字节，所以每一行的字节数必须是4的倍数，若有不足的部分会用0x00填充</p>
+<p>例图中每一行有三个像素，即3*3&#x3D;9个字节，不是4的倍数，所以每一行会有三个0x00填充进去以达到一行12个字节，即使它不表达任何东西</p>
+<p>如果我们从左往右看<strong>像素块</strong>（绿尖括）的话，那么它在图像内对应的顺序是从左到右，从下到上。</p>
+<p>在一个像素内（绿尖括内），我们可以理解为<strong>字节外从右往左，字节内从左往右的RGB排列</strong></p>
+<p>也可以理解为<strong>正常从左往右的BGR</strong></p>
+<p>毕竟这两者一模一样，怎么理解是个人主观的问题</p>
+<p>总之，通过位图数据的内容，我们可以轻松还原出图像的内容</p>
+<table>
+<thead>
+<tr>
+<th align="center">红色</th>
+<th align="center">绿色</th>
+<th align="center">蓝色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">黄色（R+G）</td>
+<td align="center">紫色（R+B）</td>
+<td align="center">青色（G+B）</td>
+</tr>
+<tr>
+<td align="center">黑色</td>
+<td align="center">白色</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">白色</td>
+<td align="center">白色</td>
+<td align="center">白色</td>
+</tr>
+</tbody></table>
+<p>至此，我们成功解读完了这个BMP文件的内容</p>
+<h3 id="3-JPEG"><a href="#3-JPEG" class="headerlink" title="3.JPEG"></a>3.JPEG</h3><p>未完待续———</p>
 
       
     </div>
