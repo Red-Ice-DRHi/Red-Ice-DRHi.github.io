@@ -16,8 +16,10 @@
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-25%20183557.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/opng.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-28%20210932.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/filter-functions.png">
 <meta property="article:published_time" content="2024-10-25T10:20:41.000Z">
-<meta property="article:modified_time" content="2024-10-28T06:10:38.165Z">
+<meta property="article:modified_time" content="2024-10-28T16:22:25.131Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
@@ -179,7 +181,7 @@
 <tr>
 <td align="center">ColorType</td>
 <td align="center">1</td>
-<td align="center">颜色类型：<br/>0：灰度图像, 1，2，4，8或16 <br/>2：真彩色图像，8或16 <br/>3：索引彩色图像，1，2，4或8 <br/>4：带α通道数据的灰度图像，8或16 <br/>6：带α通道数据的真彩色图像，8或16</td>
+<td align="center">颜色类型：<br/>0：灰度图像, 1，2，4，8或16 <br/>2：真彩色图像，8或16 <br/>3：索引彩色图像，1，2，4或8 <br/>4：带透明度数据(或称α通道数据)的灰度图像，8或16 <br/>6：带透明度数据(或称α通道数据)的真彩色图像，8或16</td>
 <td align="center">文件中为06</td>
 </tr>
 <tr>
@@ -195,7 +197,7 @@
 <td align="center">00</td>
 </tr>
 <tr>
-<td align="center">000Interlace method</td>
+<td align="center">Interlace method</td>
 <td align="center">1</td>
 <td align="center">代表图片数据是否经过交错，0代表没有交错，1代表交错。</td>
 <td align="center">00即没有交错</td>
@@ -232,7 +234,7 @@
 </tbody></table>
 <p>文件中的数据实际内容为00</p>
 <p>之后4字节的0A-0D为CRC校验，这个数据块就到这里结束了</p>
-<h4 id="3-gAMA"><a href="#3-gAMA" class="headerlink" title="3.gAMA"></a>3.gAMA</h4><p>可知它的实际内容长4个字节。它的功能与亮度调整，色彩管理，图像处理等方面有关。</p>
+<h4 id="3-gAMA"><a href="#3-gAMA" class="headerlink" title="3.gAMA"></a>3.gAMA</h4><p>可知它的实际内容长4个字节。它的功能与亮度调整，色彩管理，图像处理等方面有关。这个我们不细究。</p>
 <p>CRC校验后数据块结束</p>
 <h4 id="4-pHYS"><a href="#4-pHYS" class="headerlink" title="4.pHYS"></a>4.pHYS</h4><p>它的实际内容长9个字节，它规定的是图像的物理大小</p>
 <p>前四个字节规定X轴上每个单位长度的像素数，后四个字节规定Y轴上每个单位长度的像素数，最后一个字节规定单位是什么</p>
@@ -244,8 +246,179 @@
 <h4 id="5-IDAT"><a href="#5-IDAT" class="headerlink" title="5.IDAT"></a>5.IDAT</h4><p>这个数据块是整个PNG最重要的部分，因为它储存着每个像素块的信息。毕竟没有像素块让计算机把图从何渲染起？</p>
 <p>但PNG没有那么单纯，里面的信息是经过算法压缩的，所以储存的不是原始数据。不然里面就应该有一堆0x00和0xFF了</p>
 <p>但事实上没有</p>
-<p>我很希望能去解码它，看看它的真面目。但是我在网上找了一通以后也没找到合适的解码工具。我甚至尝试借助AI让它帮我写一个解码器。但它会去引用zlib.h。我在网上搜索链接方式或是询问AI，经历了几天折腾后，仍没能将解码工具编译出来。我真的太菜了QAQ</p>
-<p>这个话题等以后我能解码IDAT数据块后再讨论吧</p>
+<p>通过一番折腾，我通过AI弄到了能够解码这个数据块的python程序，跑了一下</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-28%20210932.png" alt="python程序解码IDAT数据块"></p>
+<p>抄出来</p>
+<table>
+<thead>
+<tr>
+<th>0x</th>
+<th align="center">00</th>
+<th align="center">01</th>
+<th align="center">02</th>
+<th align="center">03</th>
+<th align="center">04</th>
+<th align="center">05</th>
+<th align="center">06</th>
+<th align="center">07</th>
+<th align="center">08</th>
+<th align="center">09</th>
+<th align="center">0A</th>
+<th align="center">0B</th>
+<th align="center">0C</th>
+<th align="center">0D</th>
+<th align="center">0E</th>
+<th align="center">0F</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">02</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+</tr>
+<tr>
+<td>01</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">01</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">01</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+</tr>
+<tr>
+<td>02</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">02</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+</tr>
+<tr>
+<td>03</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>在前面我们知道，这个图片的色深是8bit，每个像素的组成是RGBA</p>
+<p>每个行的起头是一个字节的过滤器字节，其代表过滤器的类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">过滤器字节</th>
+<th align="center">过滤器类型</th>
+<th align="center">过滤方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0x00</td>
+<td align="center">无</td>
+<td align="center">保留原始数据</td>
+</tr>
+<tr>
+<td align="center">0x01</td>
+<td align="center">减</td>
+<td align="center">减去A</td>
+</tr>
+<tr>
+<td align="center">0x02</td>
+<td align="center">上</td>
+<td align="center">减去B</td>
+</tr>
+<tr>
+<td align="center">0x03</td>
+<td align="center">平均</td>
+<td align="center">根据A，B取平均，并向下取整</td>
+</tr>
+<tr>
+<td align="center">0x04</td>
+<td align="center">Paeth</td>
+<td align="center">使用最接近于 p &#x3D; A + B − C 的 A、B 或 C 的数值</td>
+</tr>
+</tbody></table>
+<p><img src="/../img/pictures-in-HEX/filter-functions.png" alt="A，B，C是指相对X的位置"></p>
+<p>对于每一行像素，格式都是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(过滤器)[(R,G,B,A),(R,G,B,A),(R,G,B,A)...(R,G,B,A)]</span><br></pre></td></tr></table></figure>
+
+<p>了解了这些前置内容，我们就可以开始正式分析图片像素了</p>
+<p>第一行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(00)[(FF,00,00,FF),(00,FF,00,FF),(00,00,FF,FF)]  //其中A的FF表示完全不透明</span><br></pre></td></tr></table></figure>
+
+<p>可以知道，这一行没有过滤器，</p>
+<p>像素从左到右依次为红，黄，蓝，均不透明。与原图相符</p>
+<p>第二行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(02)[(00,FF,00,00),(FF,01,FF,00),(00,FF,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x02表示与上面相减，那么我们通过把这一行与上一行相加就可以得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,00,FF),(FF,00,FF,FF),(00,FF,FF,FF)]  //其中FF+01溢出变为00</span><br></pre></td></tr></table></figure>
+
+<p>就可以得到这一行的像素是</p>
+<p>黄色，紫色，青色，均不透明。与原图相符</p>
+<p>第三行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(01)[(00,00,00,FF),(FF,FF,FF,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x01表示与左侧相减，其中第一个像素是原始数据（因为左侧没有像素）</p>
+<p>那么从第二个像素开始，将每个像素的现数据与左侧像素(原数据)相加即可得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(00,00,00,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
+
+<p>显然是黑色，白色，白色，均不透明。与原图相符</p>
+<p>第四行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(02)[(FF,FF,FF,00),(00,00,00,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x02表示与上面相减，通过把这一行与上一行(原始)相加即可得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,FF,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
+
+<p>很明显，这一行是白色，白色，白色，均不透明。与原图相符</p>
+<p>至此，四行像素我们都解析完毕了，均与原图相符。之后4个字节的CRC校验，数据块结束</p>
+<p>（这一部分真的折腾了我好几天QAQ）</p>
 <h4 id="6-IEND"><a href="#6-IEND" class="headerlink" title="6.IEND"></a>6.IEND</h4><p>目光跳过4个字节的IDAT的CRC校验，来到了这个文件的最后12个字节</p>
 <p>PNG文件的最后12个字节一定是0x[00 00 00 00 49 45 4E 44 AE 42 60 82]</p>
 <p>我们仍可以用数据块的角度去看待它</p>
