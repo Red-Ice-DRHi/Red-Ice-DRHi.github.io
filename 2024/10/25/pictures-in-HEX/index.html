@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755-1730142005375-4.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20130607.png">
 <meta property="article:published_time" content="2024-10-25T10:20:41.000Z">
-<meta property="article:modified_time" content="2024-11-01T14:41:41.047Z">
+<meta property="article:modified_time" content="2024-11-01T17:12:15.697Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
@@ -74,10 +74,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Red-Ice-DRHi.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Red-Ice-DRHi.github.io"></form>
       </div>
     </div>
   </div>
@@ -918,11 +918,18 @@
 <h4 id="7-图片压缩数据"><a href="#7-图片压缩数据" class="headerlink" title="7.图片压缩数据"></a>7.图片压缩数据</h4><p>它确实不是常规数据块的格式。但暂且我也无法理解JPEG的压缩及解码方式，所以先略过</p>
 <h4 id="8-EOI"><a href="#8-EOI" class="headerlink" title="8.EOI"></a>8.EOI</h4><p>JPEG文件以0x[FF D9]这两个字节标志其结束</p>
 <p>JPEG我暂且还只能写出这么多。如果我真的能理解它的解码方式的话我会补充</p>
+<p>我尝试询问GPT，它一直说不出具体的解码方法。但它能在使用pillow库的情况下用Python写出解码程序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开JPEG文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">open_jpeg</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> Image.<span class="built_in">open</span>(file_path) <span class="keyword">as</span> img:</span><br><span class="line">            img = img.convert(<span class="string">&#x27;RGB&#x27;</span>)  <span class="comment"># 转换为RGB格式</span></span><br><span class="line">            img.show()  <span class="comment"># 显示图像</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 获取像素数据</span></span><br><span class="line">            pixels = <span class="built_in">list</span>(img.getdata())</span><br><span class="line">            width, height = img.size</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 输出每个像素的RGB值</span></span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">                    r, g, b = pixels[y * width + x]</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">f&quot;Pixel at (<span class="subst">&#123;x&#125;</span>, <span class="subst">&#123;y&#125;</span>): R=<span class="subst">&#123;r&#125;</span>, G=<span class="subst">&#123;g&#125;</span>, B=<span class="subst">&#123;b&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error opening image: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line">open_jpeg(<span class="string">&#x27;path_to_your_image.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我尝试运行，得到输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Pixel at (0, 0): R=254, G=0, B=9</span><br><span class="line">Pixel at (1, 0): R=0, G=255, B=0</span><br><span class="line">Pixel at (2, 0): R=0, G=2, B=254</span><br><span class="line">Pixel at (0, 1): R=255, G=253, B=0</span><br><span class="line">Pixel at (1, 1): R=251, G=0, B=251</span><br><span class="line">Pixel at (2, 1): R=13, G=255, B=255</span><br><span class="line">Pixel at (0, 2): R=0, G=2, B=5</span><br><span class="line">Pixel at (1, 2): R=246, G=255, B=255</span><br><span class="line">Pixel at (2, 2): R=255, G=249, B=253</span><br><span class="line">Pixel at (0, 3): R=248, G=254, B=252</span><br><span class="line">Pixel at (1, 3): R=255, G=255, B=248</span><br><span class="line">Pixel at (2, 3): R=246, G=255, B=255</span><br></pre></td></tr></table></figure>
+
+<p>很明显，JPEG的压缩是有失真的</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://red-ice-drhi.github.io/2024/10/25/pictures-in-HEX/" data-id="cm2p6j7xy0000b0ln2nqqfy9y" data-title="十六进制下的图片" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://red-ice-drhi.github.io/2024/10/25/pictures-in-HEX/" data-id="cm2p6j7xy0000b0ln2nqqfy9y" data-title="十六进制下的图片" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -934,7 +941,7 @@
   
   
     <a href="/2024/10/24/virtual-machines/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">虚拟机</div>
     </a>
   
@@ -958,7 +965,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li></ul>
     </div>
@@ -968,7 +975,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
