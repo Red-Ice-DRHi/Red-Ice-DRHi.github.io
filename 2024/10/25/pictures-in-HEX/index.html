@@ -20,8 +20,9 @@
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/filter-functions.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755.png">
 <meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755-1730142005375-4.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20130607.png">
 <meta property="article:published_time" content="2024-10-25T10:20:41.000Z">
-<meta property="article:modified_time" content="2024-10-28T20:13:51.985Z">
+<meta property="article:modified_time" content="2024-11-01T14:35:33.906Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://red-ice-drhi.github.io/img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png">
@@ -403,7 +404,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,00,FF),(FF,00,FF,FF),(00,FF,FF,FF)]  //其中FF+01溢出变为00</span><br></pre></td></tr></table></figure>
 
 <p>就可以得到这一行的像素是</p>
-<p>黄色，紫色，青色，均不透明。与原图相符</p>
+<p>黄，紫，青，均不透明。与原图相符</p>
 <p>第三行像素</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(01)[(00,00,00,FF),(FF,FF,FF,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
 
@@ -411,14 +412,14 @@
 <p>那么从第二个像素开始，将每个像素的现数据与左侧像素(原数据)相加即可得到原始数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(00,00,00,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
 
-<p>显然是黑色，白色，白色，均不透明。与原图相符</p>
+<p>显然是黑，白，白，均不透明。与原图相符</p>
 <p>第四行像素</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(02)[(FF,FF,FF,00),(00,00,00,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
 
 <p>过滤器0x02表示与上面相减，通过把这一行与上一行(原始)相加即可得到原始数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,FF,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
 
-<p>很明显，这一行是白色，白色，白色，均不透明。与原图相符</p>
+<p>很明显，这一行是白，白，白，均不透明。与原图相符</p>
 <p>至此，四行像素我们都解析完毕了，均与原图相符。之后4个字节的CRC校验，数据块结束</p>
 <p>（这一部分真的折腾了我好几天QAQ）</p>
 <h4 id="6-IEND"><a href="#6-IEND" class="headerlink" title="6.IEND"></a>6.IEND</h4><p>PNG文件的最后12个字节一定是0x[00 00 00 00 49 45 4E 44 AE 42 60 82]</p>
@@ -582,7 +583,341 @@
 </tr>
 </tbody></table>
 <p>至此，我们成功解读完了这个BMP文件的内容</p>
-<h3 id="3-JPEG"><a href="#3-JPEG" class="headerlink" title="3.JPEG"></a>3.JPEG</h3><p>未完待续———</p>
+<h3 id="3-JPEG"><a href="#3-JPEG" class="headerlink" title="3.JPEG"></a>3.JPEG</h3><p>同样用Windows画图将例图保存为JPEG</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20130607.png" alt="JPEG"></p>
+<p>呜哇，看起来比前面两种都长都复杂</p>
+<p>先让我们了解数据段的结构。其实跟PNG的数据块蛮类似的</p>
+<p>以下是数据段的一般结构</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>这一个字节固定为0xFF，它标志的数据段的起始</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>用这一个字节说明这是什么类型的数据段</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>这两个字节会记录’段长度’+’段内容’的长度，单位是字节</td>
+</tr>
+<tr>
+<td>段内容</td>
+<td>‘段长度’-2</td>
+<td>记录数据段的实际内容，但是它的长度一定会≤65533字节</td>
+</tr>
+</tbody></table>
+<p>有些数据段会只有段标识和段类型这两部分，如SOI和EOI</p>
+<p>由于JPEG的压缩方式过于复杂，我在历经几天的折腾之后，仍不理解它的压缩原理以及解码方式。所以这里我只简单地标记数据块</p>
+<p>同样地，我将十六进制数据作完表示方便阅读。若以后我能够理解的话，会找时间补充完整</p>
+<h4 id="1-SOI"><a href="#1-SOI" class="headerlink" title="1.SOI"></a>1.SOI</h4><p>这个数据段只有段标识和段类型两块组成，固定为0x[FF D8]。这也是JPEG文件的固定开头</p>
+<h4 id="2-APP0"><a href="#2-APP0" class="headerlink" title="2.APP0"></a>2.APP0</h4><p>这个数据段一个分成如下几个部分</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>E0即为APP0</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>例图中为0x0010&#x3D;16，如果n不为0的话则是(16+3*n)D</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>交换格式</td>
+<td>5</td>
+<td>例图为’JFIF’，即例图中0x[4A 46 49 46 00]的ASCII对应字符(其中0x00是空字符)</td>
+</tr>
+<tr>
+<td>主版本号</td>
+<td>1</td>
+<td>例图中为0x01，暂且不深究版本之间的区别</td>
+</tr>
+<tr>
+<td>次版本号</td>
+<td>1</td>
+<td>例图中为0x01，暂且不深究版本之间的区别</td>
+</tr>
+<tr>
+<td>密度单位</td>
+<td>1</td>
+<td>0＝无单位<br/>1＝像素&#x2F;英寸<br/>2＝像素&#x2F;厘米<br/>例图中为0x02</td>
+</tr>
+<tr>
+<td>X像素密度</td>
+<td>2</td>
+<td>水平方向的密度 ，例图中为0x[00 2F]，代表47像素&#x2F;厘米（？我也不是很理解）</td>
+</tr>
+<tr>
+<td>Y像素密度</td>
+<td>2</td>
+<td>垂直方向的密度</td>
+</tr>
+<tr>
+<td>缩略图X像素</td>
+<td>1</td>
+<td>缩略图水平像素数目 ，例图中为0x00（应该就是没有缩略图）</td>
+</tr>
+<tr>
+<td>缩略图Y像素</td>
+<td>1</td>
+<td>缩略图垂直像素数目 ，例图中为0x00（应该就是没有缩略图）</td>
+</tr>
+<tr>
+<td>RGB缩略图</td>
+<td>3*n</td>
+<td>例图中不存在这一段，所以n&#x3D;0。当前两段数据均大于0时，这段才会存在，这时n&#x3D;缩略图像素总数&#x3D;’缩略图X像素’*’缩略图Y像素’</td>
+</tr>
+</tbody></table>
+<p>JFIF是JPEG File Interchange Forma的缩写，即JPEG文件交换格式。另外还有TIFF等格式，但很少用</p>
+<p>像素密度的含义我也不是很理解</p>
+<p>因为我把这张图放大64倍后用尺子在屏幕上量宽是3.4-3.5厘米之间，与像素密度不符(相符的话应该在4cm出头)。可能是指在打印机上的密度？</p>
+<p>关于缩略图这东西，我查到的资料说是大部分JPEG都没这东西，也就是n一般都为0，所以就先不深究了</p>
+<p>此外，一些JPEG图片可能包含APPn数据段（这里n不是上面那个n，是在1-E之间取值的一个数），它的段类型字节是0xEn。手机照片通常包含APP1，会记录时间，地点等信息。</p>
+<h4 id="3-DQT"><a href="#3-DQT" class="headerlink" title="3.DQT"></a>3.DQT</h4><p>这个图片文件中有两个DQT，我们都放在这里一起研究</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>DQT为0xDB</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值为3+n，例图两处DQT中n&#x3D;1，所以两处段长度均为0x43</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>QT信息</td>
+<td>1</td>
+<td>以两位十六进制数的视角去看这一个字节，其中高位代表QT精度，低位代表QT编号。当高位是0H时代表精度是一个字节，如果不是0H的话精度就是两个字节。例图中第一个DQT数据段中这一字节是0x00，即QT精度为1字节，QT编号为0。第二个DQT数据段中这一字节是0x01，即QT精度为1字节，QT编号为1</td>
+</tr>
+<tr>
+<td>QT内容</td>
+<td>n</td>
+<td>其中n&#x3D;64*‘QT精度’&#x3D;(0x40)*‘QT精度’，其中QT精度的单位是字节。例图中两处DQT数据段QT精度均为1字节，所以两处n&#x3D;64&#x3D;0x40</td>
+</tr>
+</tbody></table>
+<p>这个数据段应该是与压缩和解码有关，但我目前还不理解</p>
+<h4 id="4-SOF"><a href="#4-SOF" class="headerlink" title="4.SOF"></a>4.SOF</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xC0</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>例图中为0x0011即17字节</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>样本精度</td>
+<td>1</td>
+<td>单位为bit，例图中为8，大多数软件不支持12和16。样本是单个像素的颜色分量，或者说一个样本就是一个组件。所以下面的组件ID，采样系数，量化表号等每个都占1个字节</td>
+</tr>
+<tr>
+<td>图片高度</td>
+<td>2</td>
+<td>例图中为4，符合实际</td>
+</tr>
+<tr>
+<td>图片宽度</td>
+<td>2</td>
+<td>例图中为3，符合实际</td>
+</tr>
+<tr>
+<td>组件数量</td>
+<td>1</td>
+<td>1代表灰度图，3代表YCbCr&#x2F;YIQ彩色图，4代表CMYK彩色图<br/>我想这个组件数量是指色彩的组件数量，如灰度图只有亮度一个组件，所以只有黑白。也可以说RGB，YCbCr，YIQ是三个组件，CMYK是四个组件</td>
+</tr>
+<tr>
+<td></td>
+<td>以下部分会重复’组件数量’次</td>
+<td></td>
+</tr>
+<tr>
+<td>组件ID</td>
+<td>1</td>
+<td>1代表Y, 2代表Cb, 3代表Cr, 4代表I, 5代表Q</td>
+</tr>
+<tr>
+<td>采样系数</td>
+<td>1</td>
+<td>把这一字节当成两位十六进制数来看，高位代表垂直采样系数，低位代表水平采样系数</td>
+</tr>
+<tr>
+<td>量化表号</td>
+<td>1</td>
+<td>这个不是很理解有什么用</td>
+</tr>
+</tbody></table>
+<h4 id="5-DHT"><a href="#5-DHT" class="headerlink" title="5.DHT"></a>5.DHT</h4><p>这玩意我到处查到的信息说是定义huffman表。但要我说出具体是干什么用的。。。有生之年吧，反正肯定跟压缩算法有关</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xC4</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值为19+n</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>HT信息</td>
+<td>1</td>
+<td>JPEG文件里有２类Haffman 表：一类用于DC（直流量），一类用于AC（交流量）。一般有４个表：亮度的DC和AC，色度的DC和AC。最多可有６个。<br/>其中高位代表HT类型，0为DC表，1为AC表。低位代表HT号</td>
+</tr>
+<tr>
+<td>HT位表</td>
+<td>16</td>
+<td>这16个数相加应≤256</td>
+</tr>
+<tr>
+<td>HT值表</td>
+<td>n</td>
+<td>n是HT位表里16个数的和</td>
+</tr>
+</tbody></table>
+<h4 id="6-SOS"><a href="#6-SOS" class="headerlink" title="6.SOS"></a>6.SOS</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xDA</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值＝6＋2×’扫描行内组件数量’</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>扫描行内组件数量</td>
+<td>1</td>
+<td>必须属于[1,4]，通常为3，例图中也为3</td>
+</tr>
+<tr>
+<td></td>
+<td>以下部分会重复’扫描行内组件数量’次</td>
+<td></td>
+</tr>
+<tr>
+<td>组件ID</td>
+<td>1</td>
+<td>1代表Y, 2代表Cb, 3代表Cr, 4代表I, 5代表Q</td>
+</tr>
+<tr>
+<td>Huffman表号</td>
+<td>1</td>
+<td>看作两位十六进制<br/>高位表示AC表号属于[0,3]<br/>低位表示DC表号属于[0,3]</td>
+</tr>
+<tr>
+<td></td>
+<td>循环体结束</td>
+<td></td>
+</tr>
+<tr>
+<td>剩余部分</td>
+<td>3</td>
+<td>查到的资料表示作用未知</td>
+</tr>
+</tbody></table>
+<h4 id="7-图片压缩数据"><a href="#7-图片压缩数据" class="headerlink" title="7.图片压缩数据"></a>7.图片压缩数据</h4><p>它确实不是常规数据块的格式。但暂且我也无法理解JPEG的压缩及解码方式，暂且略过</p>
+<h4 id="8-EOI"><a href="#8-EOI" class="headerlink" title="8.EOI"></a>8.EOI</h4><p>JPEG文件以0x[FF D9]这两个字节标志其结束</p>
+<p>JPEG我暂且还只能写出这么多。如果我真的能理解它的解码方式的话我会补充</p>
 
       
     </div>
