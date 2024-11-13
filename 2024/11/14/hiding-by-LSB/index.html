@@ -4,22 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>虚拟机 | RedIce&#39;s Blog</title>
+  <title>hiding-by-LSB | RedIce&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="搭建虚拟机我选择了VMware Workstation 好像从初中就开始玩这个东西了，确实用得习惯 也装过一堆系统，不过大多数都是Windows的。XP，Visita，7，11，它们的安装方式其实都是换汤不换药 甚至装了个MS-DOS但不会用。曾经闲着没事还装过一个OpenWRT（拿Ubuntu编译的）。 安装Ubuntu，kali确实是我除安卓外第一次认真接触Linux的系统 Ubuntu其实也">
+  <meta name="description" content="今天来初步学习LSB隐写 LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本 所以这里我们以图片为例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="虚拟机">
-<meta property="og:url" content="https://red-ice-drhi.github.io/2024/10/24/virtual-machines/index.html">
+<meta property="og:title" content="hiding-by-LSB">
+<meta property="og:url" content="https://red-ice-drhi.github.io/2024/11/14/hiding-by-LSB/index.html">
 <meta property="og:site_name" content="RedIce&#39;s Blog">
-<meta property="og:description" content="搭建虚拟机我选择了VMware Workstation 好像从初中就开始玩这个东西了，确实用得习惯 也装过一堆系统，不过大多数都是Windows的。XP，Visita，7，11，它们的安装方式其实都是换汤不换药 甚至装了个MS-DOS但不会用。曾经闲着没事还装过一个OpenWRT（拿Ubuntu编译的）。 安装Ubuntu，kali确实是我除安卓外第一次认真接触Linux的系统 Ubuntu其实也">
+<meta property="og:description" content="今天来初步学习LSB隐写 LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本 所以这里我们以图片为例">
 <meta property="og:locale">
-<meta property="og:image" content="https://red-ice-drhi.github.io/img/virtual-machines/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20002414.png">
-<meta property="og:image" content="https://red-ice-drhi.github.io/img/virtual-machines/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20002433.png">
-<meta property="article:published_time" content="2024-10-23T16:11:47.000Z">
-<meta property="article:modified_time" content="2024-10-23T16:56:41.389Z">
+<meta property="article:published_time" content="2024-11-13T16:48:23.000Z">
+<meta property="article:modified_time" content="2024-11-13T17:20:55.545Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://red-ice-drhi.github.io/img/virtual-machines/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20002414.png">
   
     <link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
   
@@ -78,10 +75,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-virtual-machines" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-hiding-by-LSB" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/10/24/virtual-machines/" class="article-date">
-  <time class="dt-published" datetime="2024-10-23T16:11:47.000Z" itemprop="datePublished">2024-10-24</time>
+    <a href="/2024/11/14/hiding-by-LSB/" class="article-date">
+  <time class="dt-published" datetime="2024-11-13T16:48:23.000Z" itemprop="datePublished">2024-11-14</time>
 </a>
     
   </div>
@@ -92,7 +89,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      虚拟机
+      hiding-by-LSB
     </h1>
   
 
@@ -100,22 +97,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>搭建虚拟机我选择了VMware Workstation</p>
-<p>好像从初中就开始玩这个东西了，确实用得习惯</p>
-<p>也装过一堆系统，不过大多数都是Windows的。XP，Visita，7，11，它们的安装方式其实都是换汤不换药</p>
-<p>甚至装了个MS-DOS但不会用。曾经闲着没事还装过一个OpenWRT（拿Ubuntu编译的）。</p>
-<p>安装Ubuntu，kali确实是我除安卓外第一次认真接触Linux的系统</p>
-<p>Ubuntu其实也差不多，去官网下载镜像，配置空硬盘虚拟机，把镜像挂载在虚拟光驱上一路前进就装好了，配置虚拟网卡桥接无线网卡即可上网</p>
-<p>kali在官网专门提供了虚拟机的版本，我就选择了它。VMware版本下出来是硬盘文件，放进Virtual Machines文件夹，再回到Workstation里扫描就出来了</p>
+        <p>今天来初步学习LSB隐写</p>
+<p>LSB，即Least Significant Bit，最低有效位。</p>
+<p>LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息</p>
+<p>最常见的方式是在图片中隐写信息，如文本</p>
+<p>所以这里我们以图片为例</p>
 <span id="more"></span>
 
-<p><img src="/../img/virtual-machines/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20002414.png" alt="屏幕截图 2024-10-24 002414"></p>
-<p><img src="/../img/virtual-machines/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20002433.png" alt="屏幕截图 2024-10-24 002433"></p>
+<p>图片由像素构成，常见的颜色通道是(A)RGB</p>
+<p>那么我们可以在每个颜色的最后一位动点手脚，反正不是0就是1，要么增或减1，要么就完全没变</p>
+<p>可以让255变成254，或者就根本不变。一个单位的差距，人类肉眼凡胎实在难以察觉。考虑到实际，不同显示器也有色差，色域或其它的不同，这点问题可以直接让颜色最低位的改变带来的影响微乎其微</p>
+<p>借此，我们就可以把文本按bit拆分，写入到每个颜色里的最后一位。然后读取的时候按同样的规则把bit拼接起来就能得到原文，没意识到图片被动手脚的人自然难以发现异常</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://red-ice-drhi.github.io/2024/10/24/virtual-machines/" data-id="cm2m360q40000zolnhd3757v3" data-title="虚拟机" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://red-ice-drhi.github.io/2024/11/14/hiding-by-LSB/" data-id="cm3g5e3kh0000pklna69zgrsw" data-title="hiding-by-LSB" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -125,19 +122,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/10/25/pictures-in-HEX/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          十六进制下的图片
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/10/22/start-here/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/11/02/zip-encrypting/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">从这里开始！</div>
+      <div class="article-nav-title">zip破解与伪加密</div>
     </a>
   
 </nav>
