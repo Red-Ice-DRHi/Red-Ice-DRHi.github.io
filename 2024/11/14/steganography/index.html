@@ -4,19 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>hiding-by-LSB | RedIce&#39;s Blog</title>
+  <title>一些隐写术 | RedIce&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="今天来初步学习LSB隐写 LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本 所以这里我们以图片为例">
+  <meta name="description" content="1.PNG的LSB隐写LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hiding-by-LSB">
-<meta property="og:url" content="https://red-ice-drhi.github.io/2024/11/14/hiding-by-LSB/index.html">
+<meta property="og:title" content="一些隐写术">
+<meta property="og:url" content="https://red-ice-drhi.github.io/2024/11/14/steganography/index.html">
 <meta property="og:site_name" content="RedIce&#39;s Blog">
-<meta property="og:description" content="今天来初步学习LSB隐写 LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本 所以这里我们以图片为例">
+<meta property="og:description" content="1.PNG的LSB隐写LSB，即Least Significant Bit，最低有效位。 LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息 最常见的方式是在图片中隐写信息，如文本">
 <meta property="og:locale">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(255).png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20143306.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/hiding-by-LSB/output.png">
+<meta property="og:image" content="https://red-ice-drhi.github.io/img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20180246.png">
 <meta property="article:published_time" content="2024-11-13T16:48:23.000Z">
-<meta property="article:modified_time" content="2024-11-13T17:20:55.545Z">
+<meta property="article:modified_time" content="2024-11-17T16:15:10.663Z">
 <meta property="article:author" content="RI">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://red-ice-drhi.github.io/img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(255).png">
   
     <link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
   
@@ -75,9 +80,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hiding-by-LSB" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-steganography" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/11/14/hiding-by-LSB/" class="article-date">
+    <a href="/2024/11/14/steganography/" class="article-date">
   <time class="dt-published" datetime="2024-11-13T16:48:23.000Z" itemprop="datePublished">2024-11-14</time>
 </a>
     
@@ -89,7 +94,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      hiding-by-LSB
+      一些隐写术
     </h1>
   
 
@@ -97,22 +102,34 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>今天来初步学习LSB隐写</p>
-<p>LSB，即Least Significant Bit，最低有效位。</p>
+        <h3 id="1-PNG的LSB隐写"><a href="#1-PNG的LSB隐写" class="headerlink" title="1.PNG的LSB隐写"></a>1.PNG的LSB隐写</h3><p>LSB，即Least Significant Bit，最低有效位。</p>
 <p>LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息</p>
 <p>最常见的方式是在图片中隐写信息，如文本</p>
-<p>所以这里我们以图片为例</p>
 <span id="more"></span>
 
 <p>图片由像素构成，常见的颜色通道是(A)RGB</p>
 <p>那么我们可以在每个颜色的最后一位动点手脚，反正不是0就是1，要么增或减1，要么就完全没变</p>
 <p>可以让255变成254，或者就根本不变。一个单位的差距，人类肉眼凡胎实在难以察觉。考虑到实际，不同显示器也有色差，色域或其它的不同，这点问题可以直接让颜色最低位的改变带来的影响微乎其微</p>
 <p>借此，我们就可以把文本按bit拆分，写入到每个颜色里的最后一位。然后读取的时候按同样的规则把bit拼接起来就能得到原文，没意识到图片被动手脚的人自然难以发现异常</p>
+<p>但需要注意的是，隐写需要保证数据不被破坏，所以<strong>不能使用JPG隐写</strong>，JPG使用了有损压缩。但例如PNG使用无损压缩，BMP根本就不压缩</p>
+<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(255).png" alt="mc加光影好看"></p>
+<p>让我们在这个PNG文件里面隐写”Herobrine”进去如何？</p>
+<p>我在<a target="_blank" rel="noopener" href="https://blog.csdn.net/Myon5/article/details/130882443">这里</a>找到了可用的隐写程序。这部分我被AI卡了好几天，因为它写不出能找到隐写内容的程序。。。</p>
+<p>程序和使用方式我就不复制出来了</p>
+<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20143306.png" alt="cmd"></p>
+<p><img src="/../img/hiding-by-LSB/output.png" alt="output"></p>
+<p>果然是一点区别都没有（看起来）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9b5fb0f424711f9a3651ecfb37763750    #input</span><br><span class="line">31d2118725c3f3bc4ef63ea450f2d7a3	#output</span><br></pre></td></tr></table></figure>
+
+<p>但是MD5不会骗人，这说明两张图片并非一个文件</p>
+<p>接下来就使用Stegslove打开output.png，点击Analyse-Data Extract，如图中勾选，点击Preview</p>
+<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20180246.png" alt="Stegslove"></p>
+<p>看，起头的文字是什么？就是我们想要隐写的”Herobrine”<del>很有八年前看mc都市传说的感觉</del></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://red-ice-drhi.github.io/2024/11/14/hiding-by-LSB/" data-id="cm3g5e3kh0000pklna69zgrsw" data-title="hiding-by-LSB" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://red-ice-drhi.github.io/2024/11/14/steganography/" data-id="cm3ltwild0000xwln5nd12sqn" data-title="一些隐写术" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -163,7 +180,7 @@
       <ul>
         
           <li>
-            <a href="/2024/11/14/hiding-by-LSB/">hiding-by-LSB</a>
+            <a href="/2024/11/14/steganography/">一些隐写术</a>
           </li>
         
           <li>
