@@ -1,0 +1,842 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="十六进制下的图片"><meta name="keywords" content=""><meta name="author" content="RI,undefined"><meta name="copyright" content="RI"><title>十六进制下的图片【RedIce's Blog】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><link rel="icon" href="/favicon.ico"><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- script(src=url_for("/js/mathjax/mathjax.js"))--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+});
+</script><script>var isPassword = '' || false;
+if (isPassword) {
+    if (prompt('请输入文章密码') !== '') {
+        alert('密码错误！');
+        history.back();
+    }
+}</script><script>window.GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  gitment: {},
+  valine: {},
+  twikoo: {},
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-PNG"><span class="toc-number">1.</span> <span class="toc-text">1.PNG</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-IHDR"><span class="toc-number">1.1.</span> <span class="toc-text">1.IHDR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-sRGB"><span class="toc-number">1.2.</span> <span class="toc-text">2.sRGB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-gAMA"><span class="toc-number">1.3.</span> <span class="toc-text">3.gAMA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-pHYS"><span class="toc-number">1.4.</span> <span class="toc-text">4.pHYS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-IDAT"><span class="toc-number">1.5.</span> <span class="toc-text">5.IDAT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-IEND"><span class="toc-number">1.6.</span> <span class="toc-text">6.IEND</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-BMP"><span class="toc-number">2.</span> <span class="toc-text">2.BMP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">2.1.</span> <span class="toc-text">1.文件头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%8D%E5%9B%BE%E4%BF%A1%E6%81%AF%E5%A4%B4"><span class="toc-number">2.2.</span> <span class="toc-text">2.位图信息头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%8D%E5%9B%BE%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.</span> <span class="toc-text">3.位图数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JPEG"><span class="toc-number">3.</span> <span class="toc-text">3.JPEG</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-SOI"><span class="toc-number">3.1.</span> <span class="toc-text">1.SOI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-APP0"><span class="toc-number">3.2.</span> <span class="toc-text">2.APP0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DQT"><span class="toc-number">3.3.</span> <span class="toc-text">3.DQT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-SOF"><span class="toc-number">3.4.</span> <span class="toc-text">4.SOF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-DHT"><span class="toc-number">3.5.</span> <span class="toc-text">5.DHT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-SOS"><span class="toc-number">3.6.</span> <span class="toc-text">6.SOS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE"><span class="toc-number">3.7.</span> <span class="toc-text">7.图片压缩数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-EOI"><span class="toc-number">3.8.</span> <span class="toc-text">8.EOI</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color0"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color9"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color9"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">9</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">十六进制下的图片</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-10-25 | 更新于 2024-11-02</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>根据任务内容，我开始用wxMEdit查看图片文件，尝试研究计算机眼里的图片</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-24%20170601.png" alt="神奇东西"></p>
+<p>我利用Windows画图制作了这么一张简单的3*4的图片。</p>
+<p>里面的颜色都是由0或255组成，便于研究</p>
+<span id="more"></span>
+
+<h3 id="1-PNG"><a href="#1-PNG" class="headerlink" title="1.PNG"></a>1.PNG</h3><p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-25%20183557.png" alt="神奇东西.png"></p>
+<p>果然十六进制不是给人类读的</p>
+<p>但在上网一番学习后，我也对其有了一定的理解</p>
+<p><img src="/../img/pictures-in-HEX/opng.png" alt="Hpng"></p>
+<p>00行：00-07这8个字节是代表png格式的Header，或者说是png文件的固定开头，这样子电脑才能知道这是个png文件（01-03的ASCII转换过来就是PNG，有点意思）</p>
+<p>现在再来了解一个东西：数据块</p>
+<p>因为除开png头部分其他都可视作数据块的组成</p>
+<p>数据块由下面四个部分组成</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">字节数</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Length(长度)</td>
+<td align="center">4</td>
+<td align="center">指明Chunk Data的长度，单位：字节</td>
+</tr>
+<tr>
+<td align="center">Chunk Type Code(数据块类型码)</td>
+<td align="center">4</td>
+<td align="center">规定数据块类型，其名称即由ASCII对应字符确定</td>
+</tr>
+<tr>
+<td align="center">Chunk Data(数据块实际内容)</td>
+<td align="center">可变</td>
+<td align="center">最重要的内容部分，其长度由Length决定</td>
+</tr>
+<tr>
+<td align="center">CRC(循环冗余检测)</td>
+<td align="center">4</td>
+<td align="center">存储用来检测是否有错误的循环冗余码</td>
+</tr>
+</tbody></table>
+<p>其中，数据块还分为关键数据块和辅助数据块</p>
+<p>关键数据块必须存在，辅助数据块可有可无。通常以大写字母开头的为关键数据块，以小写字母开头的为辅助数据块</p>
+<p>那么现在我们就跟着上面我做了注释的图来初步了解一些数据块吧</p>
+<h4 id="1-IHDR"><a href="#1-IHDR" class="headerlink" title="1.IHDR"></a>1.IHDR</h4><p>第00行的08-0B说明了有个数据实际内容长0x0D&#x3D;13字节的数据块，是什么数据块呢？从接下去的0C-0F可以看出是IHDR数据块</p>
+<p>这个数据块中的实际内容储存着这个png文件的一些重要信息</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">字节数</th>
+<th align="center">解释</th>
+<th align="center">实例说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Width</td>
+<td align="center">4</td>
+<td align="center">图片宽度，单位：像素</td>
+<td align="center">就如原图一样宽度只有3个像素</td>
+</tr>
+<tr>
+<td align="center">Height</td>
+<td align="center">4</td>
+<td align="center">图片高度，单位：像素</td>
+<td align="center">同理，高度是4个像素</td>
+</tr>
+<tr>
+<td align="center">Bit depth</td>
+<td align="center">1</td>
+<td align="center">图像深度： <br/>索引彩色图像：1，2，4或8 <br/>灰度图像：1，2，4，8或16 <br/>真彩色图像：8或16</td>
+<td align="center">如第一个像素是(255,0,0)纯红，255需要8个bit表示</td>
+</tr>
+<tr>
+<td align="center">ColorType</td>
+<td align="center">1</td>
+<td align="center">颜色类型：<br/>0：灰度图像, 1，2，4，8或16 <br/>2：真彩色图像，8或16 <br/>3：索引彩色图像，1，2，4或8 <br/>4：带透明度数据(或称α通道数据)的灰度图像，8或16 <br/>6：带透明度数据(或称α通道数据)的真彩色图像，8或16</td>
+<td align="center">文件中为06</td>
+</tr>
+<tr>
+<td align="center">Compression method</td>
+<td align="center">1</td>
+<td align="center">表示压缩算法。目前只支持 0，表示 Deflate&#x2F;Inflate。Deflate&#x2F;inflate 是一种结合了 LZ77 和霍夫曼编码的无损压缩算法，被广泛运用于 7-zip，zlib，gzip 等场景。</td>
+<td align="center">00</td>
+</tr>
+<tr>
+<td align="center">Filter method</td>
+<td align="center">1</td>
+<td align="center">代表在压缩前应用的过滤函数类型，目前只支持0 。过滤函数类型 0 里面包括了 5 种过滤函数。</td>
+<td align="center">00</td>
+</tr>
+<tr>
+<td align="center">Interlace method</td>
+<td align="center">1</td>
+<td align="center">代表图片数据是否经过交错，0代表没有交错，1代表交错。</td>
+<td align="center">00即没有交错</td>
+</tr>
+</tbody></table>
+<p>这个数据块的实际内容到此结束，共13字节正好，接下来4个字节是CRC校验，CRC校验暂且不是研究重点，知道有这个东西得占4个字节就好。</p>
+<p>然后这个IHDR数据块就到此结束，让我们来看下一个数据块</p>
+<h4 id="2-sRGB"><a href="#2-sRGB" class="headerlink" title="2.sRGB"></a>2.sRGB</h4><p>同理，从20行的01-04可以看出有一个数据实际内容长1个字节的数据块，再往后读四个字节05-08可以看出是sRGB数据块</p>
+<p>这个数据块用于表示图片的色彩空间</p>
+<p>对于这1个字节的数据实际内容，有</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">表达</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">00</td>
+<td align="center">表示感性的，用于展示照片等</td>
+</tr>
+<tr>
+<td align="center">01</td>
+<td align="center">表示相对色彩，用于展示图标等</td>
+</tr>
+<tr>
+<td align="center">02</td>
+<td align="center">表示饱和的，用于展示图表等</td>
+</tr>
+<tr>
+<td align="center">03</td>
+<td align="center">表示绝对色彩，用于展示图片原本的色彩</td>
+</tr>
+</tbody></table>
+<p>文件中的数据实际内容为00</p>
+<p>之后4字节的0A-0D为CRC校验，这个数据块就到这里结束了</p>
+<h4 id="3-gAMA"><a href="#3-gAMA" class="headerlink" title="3.gAMA"></a>3.gAMA</h4><p>可知它的实际内容长4个字节。它的功能与亮度调整，色彩管理，图像处理等方面有关。这个我们不细究。</p>
+<p>CRC校验后数据块结束</p>
+<h4 id="4-pHYS"><a href="#4-pHYS" class="headerlink" title="4.pHYS"></a>4.pHYS</h4><p>它的实际内容长9个字节，它规定的是图像的物理大小</p>
+<p>前四个字节规定X轴上每个单位长度的像素数，后四个字节规定Y轴上每个单位长度的像素数，最后一个字节规定单位是什么</p>
+<p>例图中，x轴上每个单位长度有0x1274&#x3D;4724个像素</p>
+<p>y轴上每个单位长度有0x1274&#x3D;4724个像素</p>
+<p>单位是什么呢？，下一个字节是0x01，它对应的单位是米。</p>
+<p>也就是一米里塞4724个像素</p>
+<p>随后CRC检验，数据块结束</p>
+<h4 id="5-IDAT"><a href="#5-IDAT" class="headerlink" title="5.IDAT"></a>5.IDAT</h4><p>这个数据块是整个PNG最重要的部分，因为它储存着每个像素块的信息。毕竟没有像素块让计算机把图从何渲染起？</p>
+<p>但PNG没有那么单纯，里面的信息是经过算法压缩的，所以储存的不是原始数据。不然里面就应该有一堆0x00和0xFF了</p>
+<p>但事实上没有</p>
+<p>通过一番折腾，我通过AI弄到了能够解码这个数据块的python程序，跑了一下</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-28%20210932.png" alt="python程序解码IDAT数据块"></p>
+<p>抄出来</p>
+<table>
+<thead>
+<tr>
+<th>0x</th>
+<th align="center">00</th>
+<th align="center">01</th>
+<th align="center">02</th>
+<th align="center">03</th>
+<th align="center">04</th>
+<th align="center">05</th>
+<th align="center">06</th>
+<th align="center">07</th>
+<th align="center">08</th>
+<th align="center">09</th>
+<th align="center">0A</th>
+<th align="center">0B</th>
+<th align="center">0C</th>
+<th align="center">0D</th>
+<th align="center">0E</th>
+<th align="center">0F</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">02</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+</tr>
+<tr>
+<td>01</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">01</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">01</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+</tr>
+<tr>
+<td>02</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">02</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">FF</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+</tr>
+<tr>
+<td>03</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>在前面我们知道，这个图片的色深是8bit，每个像素的组成是RGBA</p>
+<p>每个行的起头是一个字节的过滤器字节，其代表过滤器的类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">过滤器字节</th>
+<th align="center">过滤器类型</th>
+<th align="center">过滤方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0x00</td>
+<td align="center">无</td>
+<td align="center">保留原始数据</td>
+</tr>
+<tr>
+<td align="center">0x01</td>
+<td align="center">减</td>
+<td align="center">减去A</td>
+</tr>
+<tr>
+<td align="center">0x02</td>
+<td align="center">上</td>
+<td align="center">减去B</td>
+</tr>
+<tr>
+<td align="center">0x03</td>
+<td align="center">平均</td>
+<td align="center">根据A，B取平均，并向下取整</td>
+</tr>
+<tr>
+<td align="center">0x04</td>
+<td align="center">Paeth</td>
+<td align="center">使用最接近于 p &#x3D; A + B − C 的 A、B 或 C 的数值</td>
+</tr>
+</tbody></table>
+<p><img src="/../img/pictures-in-HEX/filter-functions.png" alt="A，B，C是指相对X的位置"></p>
+<p>对于每一行像素，格式都是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(过滤器)[(R,G,B,A),(R,G,B,A),(R,G,B,A)...(R,G,B,A)]</span><br></pre></td></tr></table></figure>
+
+<p>了解了这些前置内容，我们就可以开始正式分析图片像素了</p>
+<p>第一行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(00)[(FF,00,00,FF),(00,FF,00,FF),(00,00,FF,FF)]  //其中A的FF表示完全不透明</span><br></pre></td></tr></table></figure>
+
+<p>可以知道，这一行没有过滤器，</p>
+<p>像素从左到右依次为红，黄，蓝，均不透明。与原图相符</p>
+<p>第二行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(02)[(00,FF,00,00),(FF,01,FF,00),(00,FF,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x02表示与上面相减，那么我们通过把这一行与上一行相加就可以得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,00,FF),(FF,00,FF,FF),(00,FF,FF,FF)]  //其中FF+01溢出变为00</span><br></pre></td></tr></table></figure>
+
+<p>就可以得到这一行的像素是</p>
+<p>黄，紫，青，均不透明。与原图相符</p>
+<p>第三行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(01)[(00,00,00,FF),(FF,FF,FF,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x01表示与左侧相减，其中第一个像素是原始数据（因为左侧没有像素）</p>
+<p>那么从第二个像素开始，将每个像素的现数据与左侧像素(原数据)相加即可得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(00,00,00,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
+
+<p>显然是黑，白，白，均不透明。与原图相符</p>
+<p>第四行像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(02)[(FF,FF,FF,00),(00,00,00,00),(00,00,00,00)]</span><br></pre></td></tr></table></figure>
+
+<p>过滤器0x02表示与上面相减，通过把这一行与上一行(原始)相加即可得到原始数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(xx)[(FF,FF,FF,FF),(FF,FF,FF,FF),(FF,FF,FF,FF)]</span><br></pre></td></tr></table></figure>
+
+<p>很明显，这一行是白，白，白，均不透明。与原图相符</p>
+<p>至此，四行像素我们都解析完毕了，均与原图相符。之后4个字节的CRC校验，数据块结束</p>
+<p>（这一部分真的折腾了我好几天QAQ）</p>
+<h4 id="6-IEND"><a href="#6-IEND" class="headerlink" title="6.IEND"></a>6.IEND</h4><p>PNG文件的最后12个字节一定是0x[00 00 00 00 49 45 4E 44 AE 42 60 82]</p>
+<p>我们仍可以用数据块的角度去看待它</p>
+<p>0x[00 00 00 00]说明这个数据块实际内容长度为0。这个数据块的作用是标志文件结束，自然不需要什么内容</p>
+<p>0x[49 45 4E 44]说明这个数据块是IEND</p>
+<p>那既然实际内容长度为0，那就是没有实际内容</p>
+<p>所以接下去的4个字节是CRC校验。因为前面的8个字节固定，所以CRC校验的4个字节也是固定的</p>
+<p>就能知道PNG一定是以这12个字节结束</p>
+<p>至此，PNG部分就算结束</p>
+<h3 id="2-BMP"><a href="#2-BMP" class="headerlink" title="2.BMP"></a>2.BMP</h3><p>同样一张图片，用Windows画图将其转换为BMP格式，用wxMEdit打开它。同样的，研究其数据结构</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755.png" alt="BMP"></p>
+<p>对其做上标记，使其更好阅读</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20014755-1730142005375-4.png" alt="BMP注释"></p>
+<p>我用方括号括出不同的数据块，在其中用横线或是尖括号标出其中的子块（触摸板画图不好操控，能看就行）</p>
+<p>BMP的阅读方式比较怪，但总结一下就是</p>
+<p><strong>字节外从右往左，字节内从左往右</strong></p>
+<p>例如[AB CD]在BMP中要读作是[CD AB]</p>
+<p>(这玩意我瞪了半天才明白，因为我发现像素一直对不上)</p>
+<p><strong>但不同的数据块我们仍然以从左往右的顺序进行分析</strong></p>
+<p>我们先将这个BMP分成三个大块</p>
+<p>1.文件头(bit map file header)</p>
+<p>2.位图信息头(bitmap information)</p>
+<p>3.位图数据(pixel data)</p>
+<p>（有些BMP文件还会出现调色板(color palette)数据块，但这里没有，我们先略过）</p>
+<h4 id="1-文件头"><a href="#1-文件头" class="headerlink" title="1.文件头"></a>1.文件头</h4><p>这一部分是BMP的固有开头，占14字节，其中记录了这些信息（蓝色方括）</p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">大小（字节）</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">FileType(文件类型)</td>
+<td align="center">2</td>
+<td align="center">描述其文件类型，固定为[42 4D]，对应ASCII中的BM</td>
+</tr>
+<tr>
+<td align="center">FileSize(文件大小)</td>
+<td align="center">4</td>
+<td align="center">记录文件大小，单位为KB，文件中为[66 00 00 00]即0x66&#x3D;102KB（查看文件属性，这个文件确实大小为102KB）</td>
+</tr>
+<tr>
+<td align="center">Reserved(保留位)</td>
+<td align="center">2</td>
+<td align="center">2位保留位预留给图片渲染应用，初始化必须为0（说实话我也不懂这是什么意思，但查到的资料就是这么说的）</td>
+</tr>
+<tr>
+<td align="center">Reserved(保留位)</td>
+<td align="center">2</td>
+<td align="center">同上</td>
+</tr>
+<tr>
+<td align="center">PixelDataOffset(从头到位图数据的偏移)</td>
+<td align="center">4</td>
+<td align="center">例图中的值为0x36&#x3D;54，即记录在位图数据开始前一共有多少个字节（你可以看一下，位图数据的第一个字节是第3行第7个（紫色方括号），也就是在位图数据开始前有0x36个字节）</td>
+</tr>
+</tbody></table>
+<p>文件头数据块就到此结束</p>
+<h4 id="2-位图信息头"><a href="#2-位图信息头" class="headerlink" title="2.位图信息头"></a>2.位图信息头</h4><p>（橙色方括）</p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">大小（字节）</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HeaderSize</td>
+<td align="center">4</td>
+<td align="center">信息头大小，单位是字节，例图中为0x28&#x3D;40字节</td>
+</tr>
+<tr>
+<td align="center">ImageWidth</td>
+<td align="center">4</td>
+<td align="center">描述图片宽度，单位是像素，例图中为0x03&#x3D;3符合事实</td>
+</tr>
+<tr>
+<td align="center">ImageHeight</td>
+<td align="center">4</td>
+<td align="center">描述图片高度，单位是像素，例图中为0x04&#x3D;4符合事实</td>
+</tr>
+<tr>
+<td align="center">Planes</td>
+<td align="center">2</td>
+<td align="center">目标设备说明颜色平面数，总被设置为1</td>
+</tr>
+<tr>
+<td align="center">BitsPerPixel</td>
+<td align="center">2</td>
+<td align="center">定义每个像素需要多少个bit储存，一般有1、2、4、8、16、24、32这几种。例图中为0x18&#x3D;24，因为三原色中每种颜色是0-255占8bit，一个像素就需要3*8&#x3D;24bit。（这里没有透明度了）</td>
+</tr>
+<tr>
+<td align="center">Compression</td>
+<td align="center">4</td>
+<td align="center">图像的压缩类型，最常用的就是0（BI_RGB），表示不压缩（再压缩我又得折腾半年）</td>
+</tr>
+<tr>
+<td align="center">ImageSize</td>
+<td align="center">4</td>
+<td align="center">位图数据的大小，当用BI_RGB格式时，可以设置为0。例图中是0x30&#x3D;48符合其大小</td>
+</tr>
+<tr>
+<td align="center">XpixelsPerMeter</td>
+<td align="center">4</td>
+<td align="center">水平分辨率，单位是像素&#x2F;米，有符号整数。例图为0x1274&#x3D;4724</td>
+</tr>
+<tr>
+<td align="center">YpixelsPerMeter</td>
+<td align="center">4</td>
+<td align="center">垂直分辨率，单位是像素&#x2F;米，有符号整数.例图为0x1274&#x3D;4724</td>
+</tr>
+<tr>
+<td align="center">TotalColors</td>
+<td align="center">4</td>
+<td align="center">位图使用的调色板中的颜色索引数，为0说明使用所有</td>
+</tr>
+<tr>
+<td align="center">ImportantColors</td>
+<td align="center">4</td>
+<td align="center">对图像显示有重要影响的颜色索引数，为0说明都重要</td>
+</tr>
+</tbody></table>
+<p>到此，位图信息头结束</p>
+<h4 id="3-位图数据"><a href="#3-位图数据" class="headerlink" title="3.位图数据"></a>3.位图数据</h4><p>我用紫色方括号括了起来</p>
+<p>为什么里面会有尖括号和划线之分呢？难道像素数据不都一个样吗？</p>
+<p>因为BMP存在在一个机制</p>
+<p>比特填充(bit padding)</p>
+<p>BMP扫描引擎的最小单位是4字节，所以每一行的字节数必须是4的倍数，若有不足的部分会用0x00填充</p>
+<p>例图中每一行有三个像素，即3*3&#x3D;9个字节，不是4的倍数，所以每一行会有三个0x00填充进去以达到一行12个字节，即使它不表达任何东西</p>
+<p>如果我们从左往右看<strong>像素块</strong>（绿尖括）的话，那么它在图像内对应的顺序是从左到右，从下到上。</p>
+<p>在一个像素内（绿尖括内），我们可以理解为<strong>字节外从右往左，字节内从左往右的RGB排列</strong></p>
+<p>也可以理解为<strong>正常从左往右的BGR</strong></p>
+<p>毕竟这两者一模一样，怎么理解是个人主观的问题</p>
+<p>总之，通过位图数据的内容，我们可以轻松还原出图像的内容</p>
+<table>
+<thead>
+<tr>
+<th align="center">红色</th>
+<th align="center">绿色</th>
+<th align="center">蓝色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">黄色（R+G）</td>
+<td align="center">紫色（R+B）</td>
+<td align="center">青色（G+B）</td>
+</tr>
+<tr>
+<td align="center">黑色</td>
+<td align="center">白色</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">白色</td>
+<td align="center">白色</td>
+<td align="center">白色</td>
+</tr>
+</tbody></table>
+<p>至此，我们成功解读完了这个BMP文件的内容</p>
+<h3 id="3-JPEG"><a href="#3-JPEG" class="headerlink" title="3.JPEG"></a>3.JPEG</h3><p>同样用Windows画图将例图保存为JPEG</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20130607.png" alt="JPEG"></p>
+<p>呜哇，看起来比前面两种都长都复杂</p>
+<p>先让我们了解数据段的结构。其实跟PNG的数据块蛮类似的</p>
+<p>以下是数据段的一般结构</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>这一个字节固定为0xFF，它标志的数据段的起始</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>用这一个字节说明这是什么类型的数据段</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>这两个字节会记录’段长度’+’段内容’的长度，单位是字节</td>
+</tr>
+<tr>
+<td>段内容</td>
+<td>‘段长度’-2</td>
+<td>记录数据段的实际内容，但是它的长度一定会≤65533字节</td>
+</tr>
+</tbody></table>
+<p>有些数据段会只有段标识和段类型这两部分，如SOI和EOI</p>
+<p>由于JPEG的压缩方式过于复杂，我在历经几天的折腾之后，仍不理解它的压缩原理以及解码方式。所以这里我只简单地标记数据块，并只作简单的讲解，无法涉及算法内容</p>
+<p><img src="/../img/pictures-in-HEX/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-29%20130607%EF%BC%881%EF%BC%89.png" alt="JPEG标注"></p>
+<h4 id="1-SOI"><a href="#1-SOI" class="headerlink" title="1.SOI"></a>1.SOI</h4><p>这个数据段只有段标识和段类型两块组成，固定为0x[FF D8]。这也是JPEG文件的固定开头</p>
+<h4 id="2-APP0"><a href="#2-APP0" class="headerlink" title="2.APP0"></a>2.APP0</h4><p>这个数据段一个分成如下几个部分</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>E0即为APP0</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>例图中为0x0010&#x3D;16，如果n不为0的话则是(16+3*n)D</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>交换格式</td>
+<td>5</td>
+<td>例图为’JFIF’，即例图中0x[4A 46 49 46 00]的ASCII对应字符(其中0x00是空字符)</td>
+</tr>
+<tr>
+<td>主版本号</td>
+<td>1</td>
+<td>例图中为0x01，暂且不深究版本之间的区别</td>
+</tr>
+<tr>
+<td>次版本号</td>
+<td>1</td>
+<td>例图中为0x01，暂且不深究版本之间的区别</td>
+</tr>
+<tr>
+<td>密度单位</td>
+<td>1</td>
+<td>0＝无单位<br/>1＝像素&#x2F;英寸<br/>2＝像素&#x2F;厘米<br/>例图中为0x02</td>
+</tr>
+<tr>
+<td>X像素密度</td>
+<td>2</td>
+<td>水平方向的密度 ，例图中为0x[00 2F]，代表47像素&#x2F;厘米（？我也不是很理解）</td>
+</tr>
+<tr>
+<td>Y像素密度</td>
+<td>2</td>
+<td>垂直方向的密度</td>
+</tr>
+<tr>
+<td>缩略图X像素</td>
+<td>1</td>
+<td>缩略图水平像素数目 ，例图中为0x00（应该就是没有缩略图）</td>
+</tr>
+<tr>
+<td>缩略图Y像素</td>
+<td>1</td>
+<td>缩略图垂直像素数目 ，例图中为0x00（应该就是没有缩略图）</td>
+</tr>
+<tr>
+<td>RGB缩略图</td>
+<td>3*n</td>
+<td>例图中不存在这一段，所以n&#x3D;0。当前两段数据均大于0时，这段才会存在，这时n&#x3D;缩略图像素总数&#x3D;’缩略图X像素’*’缩略图Y像素’</td>
+</tr>
+</tbody></table>
+<p>JFIF是JPEG File Interchange Forma的缩写，即JPEG文件交换格式。另外还有TIFF等格式，但很少用</p>
+<p>像素密度的含义我也不是很理解</p>
+<p>因为我把这张图放大64倍后用尺子在屏幕上量宽是3.4-3.5厘米之间，与像素密度不符(相符的话应该在4cm出头)。可能是指在打印机上的密度？</p>
+<p>关于缩略图这东西，我查到的资料说是大部分JPEG都没这东西，也就是n一般都为0，所以就先不深究了</p>
+<p>此外，一些JPEG图片可能包含APPn数据段（这里n不是上面那个n，是在1-E之间取值的一个数），它的段类型字节是0xEn。手机照片通常包含APP1，会记录时间，地点等信息。</p>
+<h4 id="3-DQT"><a href="#3-DQT" class="headerlink" title="3.DQT"></a>3.DQT</h4><p>这个图片文件中有两个DQT，我们都放在这里一起研究</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>DQT为0xDB</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值为3+n，例图两处DQT中n&#x3D;1，所以两处段长度均为0x43</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>QT信息</td>
+<td>1</td>
+<td>以两位十六进制数的视角去看这一个字节，其中高位代表QT精度，低位代表QT编号。当高位是0H时代表精度是一个字节，如果不是0H的话精度就是两个字节。例图中第一个DQT数据段中这一字节是0x00，即QT精度为1字节，QT编号为0。第二个DQT数据段中这一字节是0x01，即QT精度为1字节，QT编号为1</td>
+</tr>
+<tr>
+<td>QT内容</td>
+<td>n</td>
+<td>其中n&#x3D;64*‘QT精度’&#x3D;(0x40)*‘QT精度’，其中QT精度的单位是字节。例图中两处DQT数据段QT精度均为1字节，所以两处n&#x3D;64&#x3D;0x40</td>
+</tr>
+</tbody></table>
+<p>这个数据段应该是与压缩和解码有关，但我目前还不理解</p>
+<h4 id="4-SOF"><a href="#4-SOF" class="headerlink" title="4.SOF"></a>4.SOF</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xC0</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>例图中为0x0011即17字节</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>样本精度</td>
+<td>1</td>
+<td>单位为bit，例图中为8，大多数软件不支持12和16。样本是单个像素的颜色分量，或者说一个样本就是一个组件。所以下面的组件ID，采样系数，量化表号等每个都占1个字节</td>
+</tr>
+<tr>
+<td>图片高度</td>
+<td>2</td>
+<td>例图中为4，符合实际</td>
+</tr>
+<tr>
+<td>图片宽度</td>
+<td>2</td>
+<td>例图中为3，符合实际</td>
+</tr>
+<tr>
+<td>组件数量</td>
+<td>1</td>
+<td>1代表灰度图，3代表YCbCr&#x2F;YIQ彩色图，4代表CMYK彩色图<br/>我想这个组件数量是指色彩的组件数量，如灰度图只有亮度一个组件，所以只有黑白。也可以说RGB，YCbCr，YIQ是三个组件，CMYK是四个组件</td>
+</tr>
+<tr>
+<td></td>
+<td>以下部分会重复’组件数量’次</td>
+<td></td>
+</tr>
+<tr>
+<td>组件ID</td>
+<td>1</td>
+<td>1代表Y, 2代表Cb, 3代表Cr, 4代表I, 5代表Q</td>
+</tr>
+<tr>
+<td>采样系数</td>
+<td>1</td>
+<td>把这一字节当成两位十六进制数来看，高位代表垂直采样系数，低位代表水平采样系数</td>
+</tr>
+<tr>
+<td>量化表号</td>
+<td>1</td>
+<td>这个不是很理解有什么用</td>
+</tr>
+</tbody></table>
+<h4 id="5-DHT"><a href="#5-DHT" class="headerlink" title="5.DHT"></a>5.DHT</h4><p>这玩意我到处查到的信息说是定义huffman表。但要我说出具体是干什么用的。。。有生之年吧，反正肯定跟压缩算法有关</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>固定为0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xC4</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值为19+n</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>HT信息</td>
+<td>1</td>
+<td>JPEG文件里有２类Haffman 表：一类用于DC（直流量），一类用于AC（交流量）。一般有４个表：亮度的DC和AC，色度的DC和AC。最多可有６个。<br/>其中高位代表HT类型，0为DC表，1为AC表。低位代表HT号</td>
+</tr>
+<tr>
+<td>HT位表</td>
+<td>16</td>
+<td>这16个数相加应≤256</td>
+</tr>
+<tr>
+<td>HT值表</td>
+<td>n</td>
+<td>n是HT位表里16个数的和</td>
+</tr>
+</tbody></table>
+<h4 id="6-SOS"><a href="#6-SOS" class="headerlink" title="6.SOS"></a>6.SOS</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度（字节）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>段标识</td>
+<td>1</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>段类型</td>
+<td>1</td>
+<td>0xDA</td>
+</tr>
+<tr>
+<td>段长度</td>
+<td>2</td>
+<td>其值＝6＋2×’扫描行内组件数量’</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>扫描行内组件数量</td>
+<td>1</td>
+<td>必须属于[1,4]，通常为3，例图中也为3</td>
+</tr>
+<tr>
+<td></td>
+<td>以下部分会重复’扫描行内组件数量’次</td>
+<td></td>
+</tr>
+<tr>
+<td>组件ID</td>
+<td>1</td>
+<td>1代表Y, 2代表Cb, 3代表Cr, 4代表I, 5代表Q</td>
+</tr>
+<tr>
+<td>Huffman表号</td>
+<td>1</td>
+<td>看作两位十六进制<br/>高位表示AC表号属于[0,3]<br/>低位表示DC表号属于[0,3]</td>
+</tr>
+<tr>
+<td></td>
+<td>循环体结束</td>
+<td></td>
+</tr>
+<tr>
+<td>剩余部分</td>
+<td>3</td>
+<td>查到的资料表示作用未知</td>
+</tr>
+</tbody></table>
+<h4 id="7-图片压缩数据"><a href="#7-图片压缩数据" class="headerlink" title="7.图片压缩数据"></a>7.图片压缩数据</h4><p>它确实不是常规数据块的格式。但暂且我也无法理解JPEG的压缩及解码方式，所以先略过</p>
+<h4 id="8-EOI"><a href="#8-EOI" class="headerlink" title="8.EOI"></a>8.EOI</h4><p>JPEG文件以0x[FF D9]这两个字节标志其结束</p>
+<p>JPEG我暂且还只能写出这么多。如果我真的能理解它的解码方式的话我会补充</p>
+<p>我尝试询问GPT，它一直说不出具体的解码方法。但它能在使用pillow库的情况下用Python写出解码程序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开JPEG文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">open_jpeg</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> Image.<span class="built_in">open</span>(file_path) <span class="keyword">as</span> img:</span><br><span class="line">            img = img.convert(<span class="string">&#x27;RGB&#x27;</span>)  <span class="comment"># 转换为RGB格式</span></span><br><span class="line">            img.show()  <span class="comment"># 显示图像</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 获取像素数据</span></span><br><span class="line">            pixels = <span class="built_in">list</span>(img.getdata())</span><br><span class="line">            width, height = img.size</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 输出每个像素的RGB值</span></span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">                    r, g, b = pixels[y * width + x]</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">f&quot;Pixel at (<span class="subst">&#123;x&#125;</span>, <span class="subst">&#123;y&#125;</span>): R=<span class="subst">&#123;r&#125;</span>, G=<span class="subst">&#123;g&#125;</span>, B=<span class="subst">&#123;b&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error opening image: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line">open_jpeg(<span class="string">&#x27;path_to_your_image.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我尝试运行，得到输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Pixel at (0, 0): R=254, G=0, B=9</span><br><span class="line">Pixel at (1, 0): R=0, G=255, B=0</span><br><span class="line">Pixel at (2, 0): R=0, G=2, B=254</span><br><span class="line">Pixel at (0, 1): R=255, G=253, B=0</span><br><span class="line">Pixel at (1, 1): R=251, G=0, B=251</span><br><span class="line">Pixel at (2, 1): R=13, G=255, B=255</span><br><span class="line">Pixel at (0, 2): R=0, G=2, B=5</span><br><span class="line">Pixel at (1, 2): R=246, G=255, B=255</span><br><span class="line">Pixel at (2, 2): R=255, G=249, B=253</span><br><span class="line">Pixel at (0, 3): R=248, G=254, B=252</span><br><span class="line">Pixel at (1, 3): R=255, G=255, B=248</span><br><span class="line">Pixel at (2, 3): R=246, G=255, B=255</span><br></pre></td></tr></table></figure>
+
+<p>很明显，JPEG的压缩是有失真的</p>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/10/25/pictures-in-HEX/">https://red-ice-drhi.github.io/2024/10/25/pictures-in-HEX/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/congruence-modulo/"><i class="fas fa-angle-left">&nbsp;</i><span>同余的初步研究</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/10/24/virtual-machines/"><span>虚拟机</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
