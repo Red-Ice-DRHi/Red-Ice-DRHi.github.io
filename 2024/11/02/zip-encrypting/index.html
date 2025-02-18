@@ -1,40 +1,413 @@
-extends includes/layout.pug
-
-block content
-    article#post
-        .post-header
-            .title= page.title
-            .container
-                time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.posted')] #[=date(page['date'], config.date_format)] | #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
-                //time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
-                .button-hover.categories
-                    each categories,index in page.categories.data
-                        i.fa.fa-inbox.article-icon(aria-hidden="true")
-                        a.link-a(href=url_for(categories.path)) #[=categories.name]
-                        if(index < page.categories.data.length - 1)
-                            i.fa.fa-angle-right(style="margin: 0 8px;")
-                .button-hover.tags
-                    each tags,index in page.tags.data
-                        i.fa.fa-tag.article-icon(aria-hidden="true")
-                        a.link-a(href=url_for(tags.path)) #[=tags.name]
-                        if(index < page.tags.data.length - 1)
-                            span &nbsp;|&nbsp;
-        .main-content!= page.content
-        if (theme.post_copyright && theme.post_copyright.enable)
-            .post-copyright
-                .post-copyright-author
-                    span.post-copyright-meta= _p('post.copyright.author') + ": "
-                    span.post-copyright-info
-                        - let mailto = `mailto:${config.email}`
-                        a(href=mailto) #[=config.author]
-                .post-copyright-type
-                    span.post-copyright-meta= _p('post.copyright.link') + ": "
-                    span.post-copyright-info
-                        a(href=url_for(page.permalink)) #[=decodeURI(page.permalink)]
-                .post-copyright-notice
-                    span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-                    span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-        if (theme.comments.enable)
-            include ./includes/comments/index.pug
-    include includes/pagination.pug
-    //div!= paginator()
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="zip破解与伪加密"><meta name="keywords" content=""><meta name="author" content="RI,undefined"><meta name="copyright" content="RI"><title>zip破解与伪加密【RedIce's Blog】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><link rel="icon" href="/favicon.ico"><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- script(src=url_for("/js/mathjax/mathjax.js"))--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+});
+</script><script>var isPassword = '' || false;
+if (isPassword) {
+    if (prompt('请输入文章密码') !== '') {
+        alert('密码错误！');
+        history.back();
+    }
+}</script><script>window.GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  gitment: {},
+  valine: {},
+  twikoo: {},
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E8%A7%A3%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">1.破解密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">1.暴力破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E7%88%86%E7%A0%B4"><span class="toc-number">1.2.</span> <span class="toc-text">2.掩码爆破</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%88%86%E7%A0%B4"><span class="toc-number">1.3.</span> <span class="toc-text">3.字典爆破</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">1.4.</span> <span class="toc-text">4.Python脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.zip伪加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E6%8B%86%E8%A7%A3"><span class="toc-number">2.1.</span> <span class="toc-text">1.16进制拆解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%BA%90%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.压缩源文件数据区</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.核心目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9D%9F%E6%A0%87%E5%BF%97"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. 目录结束标志</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87wxmedit%E5%AE%9E%E7%8E%B0%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">2.通过wxMEdit实现伪加密</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color8"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color0"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color8"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">zip破解与伪加密</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-02 | 更新于 2024-11-06</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>今天来研究以下zip的破解与伪加密</p>
+<h3 id="破解密码">1.破解密码</h3>
+<p>当你不知道一个压缩包的密码但你又想解压它的时候该怎么办？能想到的确实只有多试硬破</p>
+<p>只不过这不像一般的登录密码，错多了直接把你锁住</p>
+<p>所以“多试”这个活我们就可以直接扔给电脑做</p>
+<p>我们能做的就是尽可能搜集线索，例如“密码只有数字”，“密码有6位字符”之类这样的</p>
+<p>这些线索可以大幅缩减穷举范围，让电脑少费很多功夫</p>
+<p>不然64位的随机字符组成的密码足够电脑破几百万年</p>
+<span id="more"></span>
+<p>现在让我们做点破解密码的实验</p>
+<figure>
+<img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20023057.png"
+alt="hello.txt" />
+<figcaption aria-hidden="true">hello.txt</figcaption>
+</figure>
+<p>如图所示，这是一个名为"hello.txt"的记事本，里面写着"lucky and
+happy!"（感叹号是英文字符）</p>
+<p>用bandizip把它压缩成一个密码是114514的zip文件</p>
+<p>接下来我们用<a
+target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1691394-1-1.html">Advanced Archive
+Password Recovery</a>（AAPR）来破解它</p>
+<h4 id="暴力破解">1.暴力破解</h4>
+<p>直接选择暴力破解，勾选所有可以打印字符，长度设定1-10</p>
+<p><img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20025848.png" /></p>
+<p>口令长度=5这台电脑就花了大概十分钟，现在来到了6位长度，看到五小时我不想等了</p>
+<p>这次我我把暴力范围选项框定在了所有数字里，结果这次我的电脑只花了12ms</p>
+<p><img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20030205.png" /></p>
+<p>总之暴力破解真的就是让电脑一个一个试，所以框定范围能够显著地减少时间</p>
+<h4 id="掩码爆破">2.掩码爆破</h4>
+<p>使用这个方式的前提是你知道某一位或几位是什么字符并且你知道这个密码有几位字符</p>
+<p>例如我设置掩码为“1？？？？？4”，再在暴力范围选项里选中所有可打印字符</p>
+<p><img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20032452.png" /></p>
+<p>只花了1.3s就破出来了，掩码确实大幅减少了破解时间</p>
+<h4 id="字典爆破">3.字典爆破</h4>
+<p>这个方式吧，我觉得可能局限性比较大。一般能收录在爆破词典里的密码都不会太复杂，甚至有规律。例如AAPR里自带的english.dic里面真的就是英语单词，自然是爆破不成功的。</p>
+<p>但我觉得如果说对方为了安全性整了很多复杂的密码，但他又记不住，于是写了份密码册，然后你能通过某种手段搞到对方的密码册，那确实可以做到字典爆破</p>
+<h4 id="python脚本">4.Python脚本</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">startTime = time.time()</span><br><span class="line"><span class="comment"># 判断线程是否需要终止</span></span><br><span class="line">flag = <span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract</span>(<span class="params">password, file</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        password = <span class="built_in">str</span>(password)</span><br><span class="line">        file.extractall(path=<span class="string">&#x27;.&#x27;</span>, pwd=password.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;the password is &#123;&#125;&quot;</span>.<span class="built_in">format</span>(password))</span><br><span class="line">        nowTime = time.time()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;spend time is &#123;&#125;&quot;</span>.<span class="built_in">format</span>(nowTime-startTime))</span><br><span class="line">        <span class="keyword">global</span> flag</span><br><span class="line">        <span class="comment"># 成功解压其余线程终止</span></span><br><span class="line">        flag = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">do_main</span>():</span><br><span class="line">    zfile = zipfile.ZipFile(<span class="string">&quot;path\\to\\you\\file&quot;</span>, <span class="string">&#x27;r&#x27;</span>)  <span class="comment">#这里选中你的zip</span></span><br><span class="line">    <span class="comment"># 开始尝试</span></span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100000</span>, <span class="number">999999</span>):   <span class="comment">#为了省时间，就不从1开始了</span></span><br><span class="line">        <span class="keyword">if</span> flag <span class="keyword">is</span> <span class="literal">True</span>:</span><br><span class="line">            t = threading.Thread(target=extract, args=(number, zfile))</span><br><span class="line">            t.start()</span><br><span class="line">            t.join()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    do_main()</span><br></pre></td></tr></table></figure>
+<p>得到输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">Bad password for file &#x27;hello.txt&#x27;</span><br><span class="line">the password is 114514</span><br><span class="line">spend time is 23.434365034103394</span><br></pre></td></tr></table></figure>
+<p>确实破出来了</p>
+<h3 id="zip伪加密">2.zip伪加密</h3>
+<h4 id="进制拆解">1.16进制拆解</h4>
+<p>在实现这一步之前，我想我们需要学习十六进制下的zip文件结构</p>
+<figure>
+<img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-05%20000613.png"
+alt="hello.zip" />
+<figcaption aria-hidden="true">hello.zip</figcaption>
+</figure>
+<p>仍然使用wxMEdit来打开hello.zip(没有密码)</p>
+<p>需要注意的是，zip的数据使用字节内顺读，字节外逆读的方式，这点对数量有关的数据很重要</p>
+<p>如0x[AB CD]对应的数字不是0xABCD而是0xCDAB</p>
+<figure>
+<img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-05%20000613-1730745798198-2.png"
+alt="zip" />
+<figcaption aria-hidden="true">zip</figcaption>
+</figure>
+<p>触摸板没法画得特别好</p>
+<p>这里面有三对花括号，颜色为蓝绿红。这是zip文件的三个部分</p>
+<table>
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 17%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>压缩源文件数据区</th>
+<th>核心目录</th>
+<th>目录结束标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local file header + file data + data descriptor</td>
+<td>central directory</td>
+<td>end of central directory record</td>
+</tr>
+</tbody>
+</table>
+<h5 id="压缩源文件数据区">1.压缩源文件数据区</h5>
+<p>数据区由一系列本地文件记录组成</p>
+<p>这一段以0x[50 4B 03 04]（顺）开头，标志其开始</p>
+<p>local file header里面会记录一些概述信息，稍后列表详细解释</p>
+<p>file data是文件的压缩数据。我们这里不深究其压缩算法</p>
+<p>data
+descriptor不太重要，故这里不做探究（至少在文件里没有出现，并且网上没有太多人做解释）</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Bytes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>4</td>
+<td>标识段0x[50 4B 03 04]</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>2</td>
+<td>解压文件所需版本，记录解压缩文件所需的最低支持的ZIP规范版本</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>2</td>
+<td>通用位标记，[0000 0L0J 0000
+0000]，若J这位(hello.zip中为0)为1则说明文件被加密，若L这位(hello.zip中为0)为1则说明有数据描述部分，其他部分貌似不常见</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>2</td>
+<td>压缩方式</td>
+</tr>
+<tr>
+<td>0x0A</td>
+<td>2</td>
+<td>文件最后修改时间，使用MS-DOS格式编码的时间</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>2</td>
+<td>文件最后修改日期，使用MS-DOS格式编码的日期</td>
+</tr>
+<tr>
+<td>0x0E</td>
+<td>4</td>
+<td>CRC-32校验码</td>
+</tr>
+<tr>
+<td>0x12</td>
+<td>4</td>
+<td>压缩后的大小，单位为字节，hello.zip中为0x[12 00 00
+00]=18字节，这里即hello.txt的原始大小</td>
+</tr>
+<tr>
+<td>0x16</td>
+<td>4</td>
+<td>未压缩的大小，单位为字节，hello.zip中为0x[10 00 00
+00]=16字节，这里为压缩包里hello.txt的大小</td>
+</tr>
+<tr>
+<td>0x1A</td>
+<td>2</td>
+<td>文件名长度，单位为字节，hello.zip中为0x[09 00 00 00]=9字节</td>
+</tr>
+<tr>
+<td>0x1C</td>
+<td>2</td>
+<td>扩展名长度，单位为字节，hello.zip中为0x[00 00 00 00]=0字节</td>
+</tr>
+<tr>
+<td>0x1E</td>
+<td>可变</td>
+<td>文件名，hello.zip中此段对应hello.txt</td>
+</tr>
+<tr>
+<td>0x27</td>
+<td>可变</td>
+<td>扩展区，一般情况下不使用</td>
+</tr>
+</tbody>
+</table>
+<p>当前最低功能版本定义如下：（压缩包记录的解压版本都是需要版本*10，如hello.zip中记录为0x[14
+00]=20=2.0*10）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.0 – 默认值</span><br><span class="line">1.1 – 文件是卷标</span><br><span class="line">2.0 – 文件是一个文件夹（目录）</span><br><span class="line">2.0 – 使用 Deflate 压缩来压缩文件</span><br><span class="line">2.0 – 使用传统的 PKWARE 加密对文件进行加密</span><br><span class="line">2.1 – 使用 Deflate64™ 压缩文件</span><br><span class="line">2.5 – 使用 PKWARE DCL Implode 压缩文件</span><br><span class="line">2.7 – 文件是补丁数据集</span><br><span class="line">4.5 – 文件使用 ZIP64 格式扩展</span><br><span class="line">4.6 – 使用 BZIP2 压缩文件压缩</span><br><span class="line">5.0 – 文件使用 DES 加密</span><br><span class="line">5.0 – 文件使用 3DES 加密</span><br><span class="line">5.0 – 使用原始 RC2 加密对文件进行加密</span><br><span class="line">5.0 – 使用 RC4 加密对文件进行加密</span><br><span class="line">5.1 – 文件使用 AES 加密进行加密</span><br><span class="line">5.1 – 使用更正的 RC2 加密对文件进行加密</span><br><span class="line">5.2 – 使用更正的 RC2-64 加密对文件进行加密</span><br><span class="line">6.1 – 使用非 OAEP 密钥包装对文件进行加密</span><br><span class="line">6.2 – 中央目录加密</span><br></pre></td></tr></table></figure>
+<p>压缩方式编码如下，看看就好，不必细究，hello.zip中为0x[08 00]=8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">0 – The file is stored (no compression)</span><br><span class="line">1 – The file is Shrunk</span><br><span class="line">2 – The file is Reduced with compression factor 1</span><br><span class="line">3 – The file is Reduced with compression factor 2</span><br><span class="line">4 – The file is Reduced with compression factor 3</span><br><span class="line">5 – The file is Reduced with compression factor 4</span><br><span class="line">6 – The file is Imploded</span><br><span class="line">7 – Reserved for Tokenizing compression algorithm</span><br><span class="line">8 – The file is Deflated</span><br><span class="line">9 – Enhanced Deflating using Deflate64™</span><br><span class="line">10 – PKWARE Data Compression Library Imploding</span><br><span class="line">11 – Reserved by PKWARE</span><br><span class="line">12 – File is compressed using BZIP2 algorithm</span><br></pre></td></tr></table></figure>
+<p>这张图是MS-DOS编码时间和日期的方式。查到的资料是这样，但实际上我发现hello.zip里的数据换不出正确的，但bandizip里能正确显示，暂且略过</p>
+<figure>
+<img src="../img/zip-encrypting/21774-20231110120033061-1649867627.png"
+alt="MS-DOS" />
+<figcaption aria-hidden="true">MS-DOS</figcaption>
+</figure>
+<h5 id="核心目录">2.核心目录</h5>
+<p>核心目录由一系列文件记录组成，一个文件记录对应数据区的一个压缩文件记录</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 5%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr>
+<th>Offset(为方便查找，接续上表)</th>
+<th>Bytes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x39</td>
+<td>4</td>
+<td>核心目录文件头标识0x[50 4B 01 02]</td>
+</tr>
+<tr>
+<td>0x3D</td>
+<td>2</td>
+<td>压缩所用版本，同上</td>
+</tr>
+<tr>
+<td>0x3F</td>
+<td>2</td>
+<td>解压所需版本，同上</td>
+</tr>
+<tr>
+<td>0x41</td>
+<td>2</td>
+<td>通用位标记，同上</td>
+</tr>
+<tr>
+<td>0x43</td>
+<td>2</td>
+<td>压缩方法，同上</td>
+</tr>
+<tr>
+<td>0x45</td>
+<td>2</td>
+<td>文件最后修改时间</td>
+</tr>
+<tr>
+<td>0x47</td>
+<td>2</td>
+<td>文件最后修改日期</td>
+</tr>
+<tr>
+<td>0x49</td>
+<td>4</td>
+<td>CRC-32校验码</td>
+</tr>
+<tr>
+<td>0x4D</td>
+<td>4</td>
+<td>压缩后大小</td>
+</tr>
+<tr>
+<td>0x51</td>
+<td>4</td>
+<td>未压缩大小</td>
+</tr>
+<tr>
+<td>0x55</td>
+<td>2</td>
+<td>文件名长度</td>
+</tr>
+<tr>
+<td>0x57</td>
+<td>2</td>
+<td>扩展区长度，此处不同上，为0x[24 00]=36字节</td>
+</tr>
+<tr>
+<td>0x59</td>
+<td>2</td>
+<td>文件注释长度</td>
+</tr>
+<tr>
+<td>0x5B</td>
+<td>2</td>
+<td>文件开始位置的磁盘编号，此处为0x[00 00]</td>
+</tr>
+<tr>
+<td>0x5D</td>
+<td>2</td>
+<td>内部文件属性</td>
+</tr>
+<tr>
+<td>0x5F</td>
+<td>4</td>
+<td>外部文件属性</td>
+</tr>
+<tr>
+<td>0x63</td>
+<td>4</td>
+<td>本地文件头的相对位移，记录对应数据内对应文件记录相对于压缩包起始的位置偏移量。hello.zip中为0x[00
+00 00 00]因为一开始就是对应记录</td>
+</tr>
+<tr>
+<td>0x67</td>
+<td>可变</td>
+<td>文件名，同样为hello.txt</td>
+</tr>
+<tr>
+<td>0x70</td>
+<td>可变</td>
+<td>扩展区，此处长度为上面规定的36字节</td>
+</tr>
+<tr>
+<td>此处无</td>
+<td>可变</td>
+<td>文件注释目录结束标志</td>
+</tr>
+</tbody>
+</table>
+<h5 id="目录结束标志">3. 目录结束标志</h5>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 5%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr>
+<th>Offset(为方便查找，接续上表)</th>
+<th>Bytes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x94</td>
+<td>4</td>
+<td>核心目录结束标记0x[50 4B 05 06]</td>
+</tr>
+<tr>
+<td>0x98</td>
+<td>2</td>
+<td>核心目录尾部位置所在磁盘编号，此处为0x[00 00]</td>
+</tr>
+<tr>
+<td>0x9A</td>
+<td>2</td>
+<td>核心目录开始位置所在磁盘编号，此处为0x[00 00]</td>
+</tr>
+<tr>
+<td>0x9C</td>
+<td>2</td>
+<td>该磁盘上记录的核心目录数量，此处为0x[01 00]</td>
+</tr>
+<tr>
+<td>0x9E</td>
+<td>2</td>
+<td>zip压缩包中文件总数，此处为0x[01 00]</td>
+</tr>
+<tr>
+<td>0xA0</td>
+<td>4</td>
+<td>整个核心目录大小，单位为字节，此处为0x[5B 00 00
+00]=91字节，也就是图中绿花括号所含字节数</td>
+</tr>
+<tr>
+<td>0xA4</td>
+<td>4</td>
+<td>核心目录开始位置相对位移，此处为0x[39 00 00
+00]，图中第3行第9个字节正式核心目录开始位置</td>
+</tr>
+<tr>
+<td>0xA8</td>
+<td>2</td>
+<td>注释内容长度，此处为0x[00 00 00 00]</td>
+</tr>
+<tr>
+<td>此处无</td>
+<td>可变</td>
+<td>注释内容</td>
+</tr>
+</tbody>
+</table>
+<p>至此整个hello.zip就算粗略地分析完毕了，但到此为止也够用</p>
+<h4 id="通过wxmedit实现伪加密">2.通过wxMEdit实现伪加密</h4>
+<p>通过修改核心目录区的通用位标记就可以实现伪加密</p>
+<p>在hello.zip里是0x41的位置，原本为0x[00 00]这里我们把它改成0x[01
+00]后保存</p>
+<p>再打开bandizip试图打开hello.txt，显示我们需要输入密码</p>
+<figure>
+<img
+src="../img/zip-encrypting/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-06%20154356.png"
+alt="需要输入密码" />
+<figcaption aria-hidden="true">需要输入密码</figcaption>
+</figure>
+<p>如此就实现了伪加密</p>
+<p>那破除伪加密的方法之一就很显然</p>
+<p><strong>修改通用位标记</strong></p>
+<p>但也有其他方法，如</p>
+<p><strong>在 Mac OS 及部分 Linux(如 Kali ) 系统中，可以直接打开伪加密的
+ZIP 压缩包</strong></p>
+<p><strong>使用工具ZipCenOp.jar</strong></p>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/02/zip-encrypting/">https://red-ice-drhi.github.io/2024/11/02/zip-encrypting/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/congruence-modulo/"><i class="fas fa-angle-left">&nbsp;</i><span>同余的初步研究</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/10/25/pictures-in-HEX/"><span>十六进制下的图片</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
