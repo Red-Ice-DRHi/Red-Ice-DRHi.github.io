@@ -1,71 +1,40 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="PHP环境配置"><meta name="keywords" content=""><meta name="author" content="RI,undefined"><meta name="copyright" content="RI"><title>PHP环境配置【RedIce's Blog】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><link rel="icon" href="/favicon.ico"><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- script(src=url_for("/js/mathjax/mathjax.js"))--><script type="text/x-mathjax-config">MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-});
-</script><script>var isPassword = '' || false;
-if (isPassword) {
-    if (prompt('请输入文章密码') !== '') {
-        alert('密码错误！');
-        history.back();
-    }
-}</script><script>window.GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  gitment: {},
-  valine: {},
-  twikoo: {},
-}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color7"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color7"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color7"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">PHP环境配置</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-18 | 更新于 2024-11-19</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>记录一下自己配置php环境的过程</p>
-<p>我选择官方php解释器+vscode的方案</p>
-<span id="more"></span>
-<p>先进入<a
-target="_blank" rel="noopener" href="https://www.php.net/">PHP官网</a>，点击上方的Downloads，我选择最新版本的Windows
-download，可根据实际需求选择</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20175737.png" /></p>
-<p>我们就能得到这样的压缩包</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20173209.png" /></p>
-<p>找一个位置解压。由于它最外层没有文件夹，建议解压的时候自己先建一个文件夹再进去解压，或是勾选“解压在同名目录下”之类的选项</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20173424.png" /></p>
-<p>我选择了后者，解压到了这个地方</p>
-<p>接下来配置环境变量</p>
-<p>在系统变量里的Path里新加php.exe所在的路径</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20173711.png" /></p>
-<figure>
-<img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20173805.png"
-alt="路径要根据实际情况选择，这里仅作示例" />
-<figcaption
-aria-hidden="true">路径要根据实际情况选择，这里仅作示例</figcaption>
-</figure>
-<p>打开cmd输入php -v，出现正常返回则说明变量配置成功</p>
-<figure>
-<img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20173932.png"
-alt="有没有管理员权限都一样" />
-<figcaption aria-hidden="true">有没有管理员权限都一样</figcaption>
-</figure>
-<p>然后进入vscode，安装这些插件</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20174202.png" /></p>
-<p>其中PHP Server的功能可以讲讲</p>
-<p>安装完成后，界面上应该会出现这样的按钮（没有的话就重启vscode看看）</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20174338.png" /></p>
-<p>单击一下它会把当前php文件挂载到自己电脑的服务器上运行，随后弹出浏览器浏览该页面</p>
-<p>但浏览完成后记得关闭服务器，否则会报错"Server is already running"</p>
-<p>在vscode的界面上按下CTRL+SHIFT+P</p>
-<p><img
-src="../img/php-enviro-set/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20174907.png" /></p>
-<p>点击这个选项就可以停止服务器了</p>
-<p>这个选项可能会被埋在下面，我是因为用过所以在最顶上</p>
-<p>这样子就算大致讲完了</p>
-</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/18/php-enviro-set/">https://red-ice-drhi.github.io/2024/11/18/php-enviro-set/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2025/01/24/Fermat's-little-theorem/"><i class="fas fa-angle-left">&nbsp;</i><span>费马小定理</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/14/steganography/"><span>一些隐写术</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
+extends includes/layout.pug
+
+block content
+    article#post
+        .post-header
+            .title= page.title
+            .container
+                time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.posted')] #[=date(page['date'], config.date_format)] | #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
+                //time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
+                .button-hover.categories
+                    each categories,index in page.categories.data
+                        i.fa.fa-inbox.article-icon(aria-hidden="true")
+                        a.link-a(href=url_for(categories.path)) #[=categories.name]
+                        if(index < page.categories.data.length - 1)
+                            i.fa.fa-angle-right(style="margin: 0 8px;")
+                .button-hover.tags
+                    each tags,index in page.tags.data
+                        i.fa.fa-tag.article-icon(aria-hidden="true")
+                        a.link-a(href=url_for(tags.path)) #[=tags.name]
+                        if(index < page.tags.data.length - 1)
+                            span &nbsp;|&nbsp;
+        .main-content!= page.content
+        if (theme.post_copyright && theme.post_copyright.enable)
+            .post-copyright
+                .post-copyright-author
+                    span.post-copyright-meta= _p('post.copyright.author') + ": "
+                    span.post-copyright-info
+                        - let mailto = `mailto:${config.email}`
+                        a(href=mailto) #[=config.author]
+                .post-copyright-type
+                    span.post-copyright-meta= _p('post.copyright.link') + ": "
+                    span.post-copyright-info
+                        a(href=url_for(page.permalink)) #[=decodeURI(page.permalink)]
+                .post-copyright-notice
+                    span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+                    span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+        if (theme.comments.enable)
+            include ./includes/comments/index.pug
+    include includes/pagination.pug
+    //div!= paginator()

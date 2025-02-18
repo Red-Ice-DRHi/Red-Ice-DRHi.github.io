@@ -1,121 +1,40 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="费马小定理"><meta name="keywords" content=""><meta name="author" content="RI,undefined"><meta name="copyright" content="RI"><title>费马小定理【RedIce's Blog】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><link rel="icon" href="/favicon.ico"><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- script(src=url_for("/js/mathjax/mathjax.js"))--><script type="text/x-mathjax-config">MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-});
-</script><script>var isPassword = '' || false;
-if (isPassword) {
-    if (prompt('请输入文章密码') !== '') {
-        alert('密码错误！');
-        history.back();
-    }
-}</script><script>window.GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  gitment: {},
-  valine: {},
-  twikoo: {},
-}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color2"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color4"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color5"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">费马小定理</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2025-01-24 | 更新于 2025-02-18</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>费马小定理</p>
-<p>要学数论肯定会遇见这个东西</p>
-<p>它的结论就是很简单一个式子 <span class="math display">\[
-a^p≡a\quad(mod\space p)
-\]</span> 其中p是个质数，a是任意自然数</p>
-<span id="more"></span>
-<p>但我觉得证明它这件事是蛮有趣的</p>
-<p>去年暑假打mai的人多，我是坐在mai机前想破脑袋也没想出来</p>
-<p>当时上网搜基本都是群论或者其他我没学过的东西</p>
-<p>我就想着，证明这东西这么难吗？这种东西费马是怎么敢不写证明就跟朋友交流的</p>
-<p>要是我有什么主意但不写证明我觉得我朋友会打死我(</p>
-<p>当我刚认识到这个定理时，感觉这东西好反直觉，但好像又有点道理，因为p既是指数也是模数，而且还得是个质数，肯定有什么东西在里面</p>
-<p>因为那会我才只知道同余两侧能同加减这种还算符合直觉的结论</p>
-<p>我这人蛮懒的，不认识的东西能不学就不学，所以没耐心去了解群论</p>
-<p>后面真的在网上找到了连高中生都能明白的证明，我十分喜欢它</p>
-<p>用的是二项式定理+数学归纳法</p>
-<p>第一次看到这种证明法是在这里</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87611586">费马小定理（Fermat's
-Little Theorem）</a></p>
-<p>我这篇文章只是相当学了以后把这个方法抄一遍</p>
-<p>由于数论中只研究整数，不像实数一样连续，数学归纳法在高中课本里属于随便讲一下的知识，在这里就成了强而有力的武器</p>
-<p>那对谁归纳呢？</p>
-<p>p？不太合适，因为它是质数，在自然数上它不会连续</p>
-<p>所以不妨对a作归纳，因为a是任意自然数</p>
-<p>证明： <span class="math display">\[
-0^p≡0\quad(mod\space p)
-\]</span> 这不就废话</p>
-<p>那现在只需要 <span class="math display">\[
-假设k^p≡k\quad(mod\space p)\newline证明(k+1)^p≡k+1\quad(mod\space p)
-\]</span> 看着同余式感觉没有头绪，还是把它转化成我们熟悉的等式吧 <span
-class="math display">\[
-即\newline
-假设fn=k^p-k\newline
-求证p|(k+1)^p-(k+1)
-\]</span> 接下来要么用k<sup>p</sup>-k来凑(k+1)<sup>p</sup>-(k+1)</p>
-<p>要么在(k+1)<sup>p</sup>-(k+1)中找k<sup>p</sup>-k</p>
-<p>虽然后者也不简单，但感觉前者的难度更抽象，所以还是拆括号吧</p>
-<p>对于这种括号带指数，我们只能用牛老爷的二项式定理暴力撕开它 <span
-class="math display">\[
-(k+1)^p-(k+1)=C_p^0+C_p^1k+C_p^2k^2+...+C_p^{p-1}k^{p-1}+C_p^pk^p-(k+1)
-\]</span> 只要熟悉组合数，那么就很容易能发现 <span
-class="math display">\[
-C_p^0=1,C_p^pk^p=k^p
-\]</span> 所以就剩下 <span class="math display">\[
-(k+1)^p-(k+1)=C_p^1k+C_p^2k^2+...+C_p^{p-1}k^{p-1}+(k^p-k)
-\]</span> 要们现在的目的是根据别人画好的靶来射箭</p>
-<p>我们已经明白p能够整除这一坨，根据分配律也就是里面随便拎一个项出来都是p的倍数</p>
-<p>其中(k<sup>p</sup>-k)已经是p的倍数了，那么就剩下一堆的组合数乘k的相加</p>
-<p>那这个倍数会来自k,k<sup>2</sup>,k<sup>3</sup>...k<sup>p</sup>吗？那不应该</p>
-<p>如果我们觉得它对，那也就是在说任意自然数的1-p都会是p的倍数，那费马小定理就不该这么写了</p>
-<p>或者说，这个k只是个路人，它可以是任何数，我们并不关心它是多少。只要p满足条件，那么同余式就成立。就像飘洋过海，我们关心的是船，只要船符合条件了就能够过海，不论上面载的是谁，但船不行就会翻，不论载的是谁</p>
-<p>那么证明的方向也就不可能是k</p>
-<p>只能剩下C<sub>p</sub><sup>1</sup>,C<sub>0</sub><sup>2</sup>...C<sub>p</sub><sup>p-1</sup>了
-<span class="math display">\[
-C_p^n=\frac{p!}{n!(p-n)!}=p\frac{(p-1)!}{n!(p-n)!}
-\]</span> 简单用定义式拆一下</p>
-<p>就很明显 <span class="math display">\[
-C_p^n是整数,p是整数\newline那么\frac{(p-1)!}{n!(p-n)!}是整数\newline所以C_p^n是p的倍数\newline即(k+1)^p-(k+1)=C_p^0+C_p^1k+C_p^2k^2+...+C_p^{p-1}k^{p-1}+C_p^pk^p-(k+1)是p的倍数
-\]</span> 如此我们就证明了费马小定理</p>
-<p>吗？</p>
-<p>有没有发现，到这里，我们还没用过一个条件——p是质数</p>
-<p>如果这样就能得证，我随便就有一个反例 <span class="math display">\[
-2^4≡2\quad(mod\space 4)\newline这显然不成立吧
-\]</span> 这里就是有一个小陷阱。我想了十几分钟才明白，我是笨蛋😢</p>
-<p>两数相乘得整数，其中一数是整数，另一因数是整数吗？</p>
-<p>如果你还说：这不废话吗，难道还要整数乘小数才能得整数？</p>
-<p>那你再想两秒钟，是不是发现不对了？ 2*0.5是多少？10*0.3是多少？</p>
-<p>是不是，一下就能明白错在哪</p>
-<p>分子和分母可以约分啊！</p>
-<p>我们希望另一因数是整数，不然我们就证不出费马小定理</p>
-<p>重新审视一下问题 <span class="math display">\[
-C_p^n=\frac{p!}{n!(p-n)!}=p\frac{(p-1)!}{n!(p-n)!}
-\newline是题设的质数，C_p^n是组合数
-\newline组合数从其诞生的由来就决定它一定是整数(或者你想想阶乘的定义都能明白为什么它是整数)
-\newline很明显的是\frac{(p-1)!}{(p-n)!}一定是整数，结合n的取值范围和阶乘的定义就能明白
-\newline
-C_p^n=p\frac{(p-1)!}{n!(p-n)!}=p\frac{\frac{(p-1)!}{(p-n)!}}{n!}
-\]</span>
-我们不要去正着思考，<strong>什么条件</strong>下右边那一坨会是整数</p>
-<p>思考这个"<strong>什么条件</strong>"想想就复杂不是吗？</p>
-<p>实际上我们并不关心能满足题意的所有情况</p>
-<p>我们只是想知道，<strong>p是质数</strong>这个条件够不够让右边那一侧成为整数</p>
-<p>n∈[1,p-1]，那么n!最多也就是1*2*...(p-2)(p-1)</p>
-<p>里面每一个因子都是小于p的数</p>
-<p>对于质数p，任何小于p的数都与它互质</p>
-<p>所以p不可能与n!有公因数，也就是没法约分</p>
-<p>如果这种情况下右边那一坨还不是整数的话，乘积一定会留有一个不可约的分母，使得乘积不为整数</p>
-<p>所以只能推断右边那坨是整数 <span class="math display">\[
-所以(k+1)^p-(k+1)=C_p^0+C_p^1k+C_p^2k^2+...+C_p^{p-1}k^{p-1}+C_p^pk^p-(k+1)一定是p的倍数
-\]</span> 由此我们证明了费马小定理 <span class="math display">\[
-a^p≡a\quad(mod\space p)\newline
-a是任意自然数，p是任意质数
-\]</span>
-如果a和p互质的话(因为p是质数，要使a和p互质，只需要a不是p的倍数就行)</p>
-<p>还能写成 <span class="math display">\[
-a^{p-1}≡1\quad(mod\space p)\newline
-a是任意自然数，p是任意质数，且a和p互质
-\]</span></p>
-</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2025/01/24/Fermat's-little-theorem/">https://red-ice-drhi.github.io/2025/01/24/Fermat's-little-theorem/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2025/02/18/buuctf-RSA1/"><i class="fas fa-angle-left">&nbsp;</i><span>[buuctf]-RSA1</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/18/php-enviro-set/"><span>PHP环境配置</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
+extends includes/layout.pug
+
+block content
+    article#post
+        .post-header
+            .title= page.title
+            .container
+                time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.posted')] #[=date(page['date'], config.date_format)] | #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
+                //time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]
+                .button-hover.categories
+                    each categories,index in page.categories.data
+                        i.fa.fa-inbox.article-icon(aria-hidden="true")
+                        a.link-a(href=url_for(categories.path)) #[=categories.name]
+                        if(index < page.categories.data.length - 1)
+                            i.fa.fa-angle-right(style="margin: 0 8px;")
+                .button-hover.tags
+                    each tags,index in page.tags.data
+                        i.fa.fa-tag.article-icon(aria-hidden="true")
+                        a.link-a(href=url_for(tags.path)) #[=tags.name]
+                        if(index < page.tags.data.length - 1)
+                            span &nbsp;|&nbsp;
+        .main-content!= page.content
+        if (theme.post_copyright && theme.post_copyright.enable)
+            .post-copyright
+                .post-copyright-author
+                    span.post-copyright-meta= _p('post.copyright.author') + ": "
+                    span.post-copyright-info
+                        - let mailto = `mailto:${config.email}`
+                        a(href=mailto) #[=config.author]
+                .post-copyright-type
+                    span.post-copyright-meta= _p('post.copyright.link') + ": "
+                    span.post-copyright-info
+                        a(href=url_for(page.permalink)) #[=decodeURI(page.permalink)]
+                .post-copyright-notice
+                    span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+                    span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+        if (theme.comments.enable)
+            include ./includes/comments/index.pug
+    include includes/pagination.pug
+    //div!= paginator()
