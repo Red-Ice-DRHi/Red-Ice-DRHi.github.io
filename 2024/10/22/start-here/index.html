@@ -20,35 +20,59 @@ if (isPassword) {
   valine: {},
   twikoo: {},
 }</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">1.搭建博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-hexo%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2.hexo无法安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-hexo-d%E4%B9%8B%E5%90%8E%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E6%96%B0"><span class="toc-number">3.</span> <span class="toc-text">3.hexo d之后博客不更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Typora"><span class="toc-number">4.</span> <span class="toc-text">4.Typora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9C%A8%E6%96%87%E7%AB%A0%E9%87%8C%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">5.在文章里插入图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B"><span class="toc-number">6.</span> <span class="toc-text">6.从这里开始</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color6"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color7"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color8"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">从这里开始！</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-10-22 | 更新于 2024-10-24</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>历经两三天的折腾，总算是搭建出了属于自己的博客，我十分开心</p>
-<h3 id="1-搭建博客"><a href="#1-搭建博客" class="headerlink" title="1.搭建博客"></a>1.搭建博客</h3><p>大体过程就是GitHub建仓库，下nodejs，下git，通过git生成ssh密钥并绑定GitHub实现免密登录</p>
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">1.搭建博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2.hexo无法安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-d%E4%B9%8B%E5%90%8E%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E6%96%B0"><span class="toc-number">3.</span> <span class="toc-text">3.hexo d之后博客不更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typora"><span class="toc-number">4.</span> <span class="toc-text">4.Typora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E9%87%8C%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">5.在文章里插入图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B"><span class="toc-number">6.</span> <span class="toc-text">6.从这里开始</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color0"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color5"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color7"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">从这里开始！</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-10-22 | 更新于 2024-10-24</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>历经两三天的折腾，总算是搭建出了属于自己的博客，我十分开心</p>
+<h3 id="搭建博客">1.搭建博客</h3>
+<p>大体过程就是GitHub建仓库，下nodejs，下git，通过git生成ssh密钥并绑定GitHub实现免密登录</p>
 <p>再用git下载hexo博客框架，配置完成后就可以上传至GitHub了</p>
 <p>基本上我是参照这篇文章做的</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/547520780"><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/547520780">2022 Hexo 博客搭建和使用教程(Windows) - 知乎</a></a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/547520780">[2022 Hexo
+博客搭建和使用教程(Windows) -
+知乎](https://zhuanlan.zhihu.com/p/547520780)</a></p>
 <p>大多数步骤都是结合生活常识可以解决的问题</p>
 <p>但也有些问题卡了我很久。真的是，上网到处搜都难找答案</p>
 <span id="more"></span>
-
-<h3 id="2-hexo无法安装"><a href="#2-hexo无法安装" class="headerlink" title="2.hexo无法安装"></a>2.hexo无法安装</h3><p><img src="/../../img/start-here/1.png" alt="1"></p>
+<h3 id="hexo无法安装">2.hexo无法安装</h3>
+<figure>
+<img src="/../../img/start-here/1.png" alt="1" />
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <p>一开始看到这报错我以为是权限不足，试过给git管理员权限，降低nodejs文件夹的安全等级之类，不起用</p>
 <p>也在浏览器上搜了一堆方法，一个是这个问题比较少见，另一个就是网上给的方法也不起用</p>
 <p>卡了一早上一晚上，最后找到的解决方式很让人摸不着头脑</p>
 <p><strong>用cmd执行</strong></p>
 <p>受不了这玩意</p>
-<h3 id="3-hexo-d之后博客不更新"><a href="#3-hexo-d之后博客不更新" class="headerlink" title="3.hexo d之后博客不更新"></a>3.hexo d之后博客不更新</h3><p>输入hexo d后即使没有报错，GitHub的仓库里的文件也确实有更新</p>
+<h3 id="hexo-d之后博客不更新">3.hexo d之后博客不更新</h3>
+<p>输入hexo d后即使没有报错，GitHub的仓库里的文件也确实有更新</p>
 <p>也是一样到处搜罗没能找到适合我的答案，又这样卡了一天一夜，但是其中几个答案确实给到了我提示</p>
 <p>最后发现在仓库的设置里找到Pages里面的Branch，把里面的branch换成_config.yml里所设置的，我这里是跟着教程设置的master所以就换了这个</p>
-<p><img src="/../../img/start-here/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20233604.png" alt="屏幕截图 2024-10-23 233604"></p>
-<p>如果还是不行就试试把General的Default branch也改过去吧，虽然我不清楚这个有没有作用，但一开始我确实尝试过但没生效然后再改Pages里的Branch就生效了。</p>
-<p><img src="/../../img/start-here/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20235437.png" alt="屏幕截图 2024-10-23 235437"></p>
-<h3 id="4-Typora"><a href="#4-Typora" class="headerlink" title="4.Typora"></a>4.Typora</h3><p>在浏览器上搜索markdown的编辑器，有不少人推荐它，我也就因此选择了它</p>
+<figure>
+<img
+src="/../../img/start-here/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20233604.png"
+alt="屏幕截图 2024-10-23 233604" />
+<figcaption aria-hidden="true">屏幕截图 2024-10-23 233604</figcaption>
+</figure>
+<p>如果还是不行就试试把General的Default
+branch也改过去吧，虽然我不清楚这个有没有作用，但一开始我确实尝试过但没生效然后再改Pages里的Branch就生效了。</p>
+<figure>
+<img
+src="/../../img/start-here/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20235437.png"
+alt="屏幕截图 2024-10-23 235437" />
+<figcaption aria-hidden="true">屏幕截图 2024-10-23 235437</figcaption>
+</figure>
+<h3 id="typora">4.Typora</h3>
+<p>在浏览器上搜索markdown的编辑器，有不少人推荐它，我也就因此选择了它</p>
 <p>然后发现它收费</p>
 <p>虽然不是什么光彩的事</p>
-<p>解决方式：官网下载软件+<a href="%5BTypora%E5%85%8D%E8%B4%B9%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88%E4%BB%85%E4%BE%9B%E5%AD%A6%E4%B9%A0%EF%BC%89-CSDN%E5%8D%9A%E5%AE%A2%5D(https://blog.csdn.net/weixin_44406127/article/details/134778407)">Typora免费版安装教程（仅供学习）</a></p>
-<h3 id="5-在文章里插入图片"><a href="#5-在文章里插入图片" class="headerlink" title="5.在文章里插入图片"></a>5.在文章里插入图片</h3><p>这个不是什么难解决的问题，浏览器搜没多久就有答案了</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Qxiaofei_/article/details/124629908">【Hexo】GitHub+Typora写博客+图片上传</a></p>
+<p>解决方式：官网下载软件+<a
+href="%5BTypora免费版安装教程（仅供学习）-CSDN博客%5D(https://blog.csdn.net/weixin_44406127/article/details/134778407)">Typora免费版安装教程（仅供学习）</a></p>
+<h3 id="在文章里插入图片">5.在文章里插入图片</h3>
+<p>这个不是什么难解决的问题，浏览器搜没多久就有答案了</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Qxiaofei_/article/details/124629908">【Hexo】GitHub+Typora写博客+图片上传</a></p>
 <p>跟着这个做就好了</p>
-<h3 id="6-从这里开始"><a href="#6-从这里开始" class="headerlink" title="6.从这里开始"></a>6.从这里开始</h3><p>经过了几天的努力，我搭建起了属于自己的博客，也在自己的博客里写出了自己的第一篇文章，对我自己而言确实是个小成就。说不定未来的我遇到这样的问题还需要向这篇文章寻求帮助。这篇文章既是我在搭建博客时遇到的难题总结，也是对我搭起博客的纪念。那么，就从这里开始吧。</p>
-<p style="color: #FFA438;font-size: 20px;">ヤバイですね☆!</p>
-
+<h3 id="从这里开始">6.从这里开始</h3>
+<p>经过了几天的努力，我搭建起了属于自己的博客，也在自己的博客里写出了自己的第一篇文章，对我自己而言确实是个小成就。说不定未来的我遇到这样的问题还需要向这篇文章寻求帮助。这篇文章既是我在搭建博客时遇到的难题总结，也是对我搭起博客的纪念。那么，就从这里开始吧。</p>
+<p style="color: #FFA438;font-size: 20px;">
+ヤバイですね☆!
+</p>
 </div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/10/22/start-here/">https://red-ice-drhi.github.io/2024/10/22/start-here/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/10/24/virtual-machines/"><i class="fas fa-angle-left">&nbsp;</i><span>虚拟机</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/10/22/hello-world/"><span>Hello World</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>

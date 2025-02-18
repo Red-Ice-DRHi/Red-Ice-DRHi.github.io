@@ -20,64 +20,105 @@ if (isPassword) {
   valine: {},
   twikoo: {},
 }</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9B%BE%E7%89%87%E7%9A%84LSB%E9%9A%90%E5%86%99"><span class="toc-number">1.</span> <span class="toc-text">1.图片的LSB隐写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8E%A5%E7%BB%AD%E5%BC%8F%E7%9A%84%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F"><span class="toc-number">2.</span> <span class="toc-text">2.接续式的文件隐藏</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color3"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color4"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color9"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">一些隐写术</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-14 | 更新于 2024-11-18</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><h3 id="1-图片的LSB隐写"><a href="#1-图片的LSB隐写" class="headerlink" title="1.图片的LSB隐写"></a>1.图片的LSB隐写</h3><p>LSB，即Least Significant Bit，最低有效位。</p>
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84lsb%E9%9A%90%E5%86%99"><span class="toc-number">1.</span> <span class="toc-text">1.图片的LSB隐写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E7%BB%AD%E5%BC%8F%E7%9A%84%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F"><span class="toc-number">2.</span> <span class="toc-text">2.接续式的文件隐藏</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color9"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color5"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color5"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">一些隐写术</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-14 | 更新于 2024-11-18</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><h3 id="图片的lsb隐写">1.图片的LSB隐写</h3>
+<p>LSB，即Least Significant Bit，最低有效位。</p>
 <p>LSB隐写的大致思路就是通过更改文件里的最低有效位，在尽少影响文件的情况下隐秘地写入信息</p>
 <p>最常见的方式是在图片中隐写信息，如文本</p>
 <span id="more"></span>
-
 <p>图片由像素构成，常见的颜色通道是(A)RGB</p>
 <p>那么我们可以在每个颜色的最后一位动点手脚，反正不是0就是1，要么增或减1，要么就完全没变</p>
 <p>可以让255变成254，或者就根本不变。一个单位的差距，人类肉眼凡胎实在难以察觉。考虑到实际，不同显示器也有色差，色域或其它的不同，这点问题可以直接让颜色最低位的改变带来的影响微乎其微</p>
 <p>借此，我们就可以把文本按bit拆分，写入到每个颜色里的最后一位。然后读取的时候按同样的规则把bit拼接起来就能得到原文，没意识到图片被动手脚的人自然难以发现异常</p>
 <p>但需要注意的是，隐写需要保证数据不被破坏，所以<strong>不能使用JPG隐写</strong>，JPG使用了有损压缩。但例如PNG使用无损压缩，BMP根本就不压缩</p>
-<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(255).png" alt="mc加光影好看"></p>
-<p>让我们在这个PNG文件里面隐写”Herobrine”进去如何？</p>
-<p>我在<a target="_blank" rel="noopener" href="https://blog.csdn.net/Myon5/article/details/130882443">这里</a>找到了可用的隐写程序。这部分我被AI卡了好几天，因为它写不出能找到隐写内容的程序。。。</p>
+<figure>
+<img
+src="../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(255).png"
+alt="mc加光影好看" />
+<figcaption aria-hidden="true">mc加光影好看</figcaption>
+</figure>
+<p>让我们在这个PNG文件里面隐写"Herobrine"进去如何？</p>
+<p>我在<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Myon5/article/details/130882443">这里</a>找到了可用的隐写程序。这部分我被AI卡了好几天，因为它写不出能找到隐写内容的程序。。。</p>
 <p>程序和使用方式我就不复制出来了</p>
-<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20143306.png" alt="cmd"></p>
-<p><img src="/../img/hiding-by-LSB/output.png" alt="output"></p>
+<figure>
+<img
+src="../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20143306.png"
+alt="cmd" />
+<figcaption aria-hidden="true">cmd</figcaption>
+</figure>
+<figure>
+<img src="../img/hiding-by-LSB/output.png" alt="output" />
+<figcaption aria-hidden="true">output</figcaption>
+</figure>
 <p>果然是一点区别都没有（看起来）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9b5fb0f424711f9a3651ecfb37763750    #input</span><br><span class="line">31d2118725c3f3bc4ef63ea450f2d7a3	#output</span><br></pre></td></tr></table></figure>
-
 <p>但是MD5不会骗人，这说明两张图片并非一个文件</p>
-<p>接下来就使用Stegslove打开output.png，点击Analyse-Data Extract，如图中勾选，点击Preview</p>
-<p><img src="/../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20180246.png" alt="Stegslove"></p>
-<p>看，起头的文字是什么？就是我们想要隐写的”Herobrine”<del>很有八年前看mc都市传说的感觉</del></p>
+<p>接下来就使用Stegslove打开output.png，点击Analyse-Data
+Extract，如图中勾选，点击Preview</p>
+<figure>
+<img
+src="../img/hiding-by-LSB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-17%20180246.png"
+alt="Stegslove" />
+<figcaption aria-hidden="true">Stegslove</figcaption>
+</figure>
+<p>看，起头的文字是什么？就是我们想要隐写的"Herobrine"<del>很有八年前看mc都市传说的感觉</del></p>
 <p>对于BMP的LSB隐写也是一样的操作，连程序都不用换</p>
-<h3 id="2-接续式的文件隐藏"><a href="#2-接续式的文件隐藏" class="headerlink" title="2.接续式的文件隐藏"></a>2.接续式的文件隐藏</h3><p>在网上没有找到这种隐写方式有什么特定的称呼，我就暂且起这个名</p>
+<h3 id="接续式的文件隐藏">2.接续式的文件隐藏</h3>
+<p>在网上没有找到这种隐写方式有什么特定的称呼，我就暂且起这个名</p>
 <p>这个方法其实很简单，用的特性就是压缩软件会自己在文件中寻找zip的文件标识并且忽视其他部分</p>
 <p>例如我们把最上面的png文件(input.png)做一个副本后用wxMEdit打开，再选择你想隐藏的zip文件，同样用wxMEdit打开(这里我选择上次使用过的hello.zip)</p>
-<p><img src="/../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20015500.png" alt="input - 副本.png"></p>
-<p><img src="/../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20015513.png" alt="hello.zip"></p>
-<p>这里我们直接选中hello.zip的窗口，CTRL+A，CTRL+C带走，转到input - 副本.png的窗口，找到最后的地方，直接CTRL+V拼接进去</p>
+<figure>
+<img
+src="../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20015500.png"
+alt="input - 副本.png" />
+<figcaption aria-hidden="true">input - 副本.png</figcaption>
+</figure>
+<figure>
+<img
+src="../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20015513.png"
+alt="hello.zip" />
+<figcaption aria-hidden="true">hello.zip</figcaption>
+</figure>
+<p>这里我们直接选中hello.zip的窗口，CTRL+A，CTRL+C带走，转到input -
+副本.png的窗口，找到最后的地方，直接CTRL+V拼接进去</p>
 <p>CRTL+S保存，大功告成</p>
 <p>这个步骤其实也可以用一个cmd命令完成</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">copy</span> /b &lt;file1&gt;+&lt;file2&gt; &lt;file3&gt;</span><br></pre></td></tr></table></figure>
-
 <p>意思就是在二进制的方式下把file2的内容接续进file1以此生成file3</p>
 <p>所以这一个步骤就可以写成</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">copy</span> /b input.png+hello.zip &lt;custom_name&gt;.png</span><br></pre></td></tr></table></figure>
-
-
-
 <p>这时候用图片查看器查看图片仍然是看不出区别，甚至可以说看起来根本没变化</p>
-<p><img src="/../img/steganography/input%20-%20%E5%89%AF%E6%9C%AC.png" alt="input - 副本.png"></p>
+<figure>
+<img src="../img/steganography/input%20-%20%E5%89%AF%E6%9C%AC.png"
+alt="input - 副本.png" />
+<figcaption aria-hidden="true">input - 副本.png</figcaption>
+</figure>
 <p>但有趣的是，如果我们把后缀名从png改成zip，它会变成可读的压缩文件，并且文件与原本的压缩包一模一样</p>
-<p><img src="/../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20020632.png" alt="input - 副本.zip"></p>
+<figure>
+<img
+src="../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20020632.png"
+alt="input - 副本.zip" />
+<figcaption aria-hidden="true">input - 副本.zip</figcaption>
+</figure>
 <p>当然拼接后文件大小理论上是两者之和。所以如果一个图片有几百MB甚至上GB那基本就是有问题（分辨率超级超级高应该不常见）</p>
-<p><img src="/../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20021641.png"></p>
+<p><img
+src="../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20021641.png" /></p>
 <p>但像现在的情况就是一个文本的压缩包能有几个大小？根本不可能从大小判断</p>
 <p>怎么寻找它的隐写内容？</p>
-<p>这次我们使用的隐写载体是PNG，在一般情况下，PNG一定会以0x[00 00 00 00 49 45 4E 44 AE 42 60 82]结束，那么我们就查找这一块，看看这部分后面还有没有东西</p>
-<p><img src="/../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20024539.png"></p>
-<p>显然是有的（你看里面还有”IEND”这几个字）。PNG文件内容到这十二个字节就是结束，这之后还有只能说明这个文件里不止有这个PNG。</p>
+<p>这次我们使用的隐写载体是PNG，在一般情况下，PNG一定会以0x[00 00 00 00
+49 45 4E 44 AE 42 60
+82]结束，那么我们就查找这一块，看看这部分后面还有没有东西</p>
+<p><img
+src="../img/steganography/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-18%20024539.png" /></p>
+<p>显然是有的（你看里面还有"IEND"这几个字）。PNG文件内容到这十二个字节就是结束，这之后还有只能说明这个文件里不止有这个PNG。</p>
 <p>对不同类型的隐写载体我们自然要使用对应的结束表示来寻找</p>
 <p>但像BMP这种没有结束标识的文件就比较难搞，我们只能通过图片宽高等信息来判断图片结束位置，再看后面有没有东西</p>
-<p>在这12个字节之后，后面4个字节是0x[50 4B 03 04]，这是zip压缩源文件数据区的标识段，我们便可以猜测这剩下的部分是zip文件</p>
+<p>在这12个字节之后，后面4个字节是0x[50 4B 03
+04]，这是zip压缩源文件数据区的标识段，我们便可以猜测这剩下的部分是zip文件</p>
 <p>所以我们就可以把这剩下的部分复制走制作一个新文件，用压缩软件打开，正好我们就可以看见一个完整的压缩包内容。</p>
 <p>那如果对方不讲武德不放在最后而是放在最前或者是中间呢？我试验过了，这样子做会让图片无法打开所以没有意义。</p>
 <p>实际上这种隐写方式适用于大多数类型文件里面隐藏zip，甚至是编程作业的exe（正经的不知道，毕竟真的不好验证是否影响功能）。就很神奇，大部分文件只会根据文件信息读取属于自己的数据块，但起始信息一定要处于文件开头。但zip读取的时候它对应的数据块可以是在文件的任何地方</p>
 <p>但实际上这种方式可以隐藏任意文件，以zip示例的原因只是它就算被隐藏了也能打得开，其他类型则不一定</p>
 <p>只要能看出表文件的结尾后面还有没有东西我们就可以看出它有没有隐藏别的文件</p>
 <p>（或许会再更新）</p>
-</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/14/steganography/">https://red-ice-drhi.github.io/2024/11/14/steganography/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/18/php-enviro-set/"><i class="fas fa-angle-left">&nbsp;</i><span>PHP环境配置</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/zip-encrypting/"><span>zip破解与伪加密</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/14/steganography/">https://red-ice-drhi.github.io/2024/11/14/steganography/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/18/php-enviro-set/"><i class="fas fa-angle-left">&nbsp;</i><span>PHP环境配置</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/congruence-modulo/"><span>同余的初步研究</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>

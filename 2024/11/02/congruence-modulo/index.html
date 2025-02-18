@@ -20,44 +20,62 @@ if (isPassword) {
   valine: {},
   twikoo: {},
 }</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%95%E4%B8%BA%E5%90%8C%E4%BD%99"><span class="toc-number">1.</span> <span class="toc-text">1.何为同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%8C%E4%BD%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text">2.同余的基本性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%87%AA%E5%8F%8D%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">1.自反性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AF%B9%E7%A7%B0%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">2.对称性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BC%A0%E9%80%92%E6%80%A7"><span class="toc-number">2.3.</span> <span class="toc-text">3.传递性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8A%A0%E5%87%8F%E6%A8%A1%E6%95%B0%E4%B8%BA%E8%87%AA%E8%BA%AB"><span class="toc-number">2.4.</span> <span class="toc-text">4.加减模数为自身</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E5%8A%A0%E5%87%8F%EF%BC%88%E5%90%8C%E4%BD%99%E5%BC%8F%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">5.左右可同加减（同余式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E4%B9%98%EF%BC%88%E5%90%8C%E4%BD%99%E5%BC%8F%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">6.左右可同乘（同余式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E9%99%A4%E5%91%A2%EF%BC%9F%E6%88%91%E5%90%8C%E9%99%A4%E5%91%A2%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">7.除呢？我同除呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E6%B1%82%E5%B9%82"><span class="toc-number">2.8.</span> <span class="toc-text">8.左右可同求幂</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color2"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color3"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color7"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">同余的初步研究</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-02 | 更新于 2025-02-18</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><h3 id="1-何为同余"><a href="#1-何为同余" class="headerlink" title="1.何为同余"></a>1.何为同余</h3><p>数论啊，兜兜转转还是回到了这里</p>
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%90%8C%E4%BD%99"><span class="toc-number">1.</span> <span class="toc-text">1.何为同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E4%BD%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text">2.同余的基本性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8F%8D%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">1.自反性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">2.对称性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E6%80%A7"><span class="toc-number">2.3.</span> <span class="toc-text">3.传递性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%87%8F%E6%A8%A1%E6%95%B0%E4%B8%BA%E8%87%AA%E8%BA%AB"><span class="toc-number">2.4.</span> <span class="toc-text">4.加减模数为自身</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E5%8A%A0%E5%87%8F%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">5.左右可同加减（同余式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E4%B9%98%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-number">2.6.</span> <span class="toc-text">6.左右可同乘（同余式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%A4%E5%91%A2%E6%88%91%E5%90%8C%E9%99%A4%E5%91%A2"><span class="toc-number">2.7.</span> <span class="toc-text">7.除呢？我同除呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%8F%B3%E5%8F%AF%E5%90%8C%E6%B1%82%E5%B9%82"><span class="toc-number">2.8.</span> <span class="toc-text">8.左右可同求幂</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color7"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color2"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color6"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">同余的初步研究</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2024-11-02 | 更新于 2025-02-18</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><h3 id="何为同余">1.何为同余</h3>
+<p>数论啊，兜兜转转还是回到了这里</p>
 <p>这里并不会像教材一样严格讨论定义，重点还是会用，会算就行</p>
 <p>可能字面会错，但我能保证意思不会差</p>
 <p>仅仅是记录我的学习过程</p>
 <p>数论研究的是整数，所以以下的所有字母默认均为属于整数</p>
 <span id="more"></span>
-
 <p>什么是余数？</p>
 <p>这还用想吗，被除数-商*除数就是余数</p>
 <p>但如果被除数是负数呢？越减越小，减减更快乐？所以我们不应该只将其定义为“被除数减去除数直到其小于除数后的那个数”。</p>
-<p>想一想<br>$$<br>(-3)÷2<br>$$<br>这玩意应该余啥？我们都把负数专门拿出来讨论了，那只输出本体或是固定的负无穷大那就没意思了</p>
-<p>何必拘泥于减法呢？我们可以看看加法<br>$$<br>(-3)+2&#x3D;-1<br>$$</p>
+<p>想一想 <span class="math display">\[
+(-3)÷2
+\]</span>
+这玩意应该余啥？我们都把负数专门拿出来讨论了，那只输出本体或是固定的负无穷大那就没意思了</p>
+<p>何必拘泥于减法呢？我们可以看看加法 <span class="math display">\[
+(-3)+2=-1
+\]</span></p>
 <p>啥？你跟我说-3除以2余1？确实，我就是想说这个</p>
 <p>或者说实际上我们并不是想知道它严格上的余数到底是什么，我们只想要一个对人类而言最简单易懂的结果</p>
 <p>例如一天有24小时，每天早上八点有课</p>
 <p>我们会理解为</p>
-<div style="text-align:center;font-weight:bold;">我们每天八点有课（二十四小时值，不强调早上晚上，直接数值体现）</div>
-
+<div style="text-align:center;font-weight:bold;">
+我们每天八点有课（二十四小时值，不强调早上晚上，直接数值体现）
+</div>
 <p>而不会说</p>
-<div style="text-align:center;font-weight:bold;">我们在...负四十点，负十六点，八点，三十二点，五十六点...有课</div>
-
+<div style="text-align:center;font-weight:bold;">
+我们在...负四十点，负十六点，八点，三十二点，五十六点...有课
+</div>
 <p>在“我们每天八点有课”中，我们已经不关心是哪一天了，反正昨天有，今天有，明天也有。我们觉得每一天的八点都一样要上课，那就不必拘泥于到底是哪一天，八点和三十二点已经在暗中被画上了等号</p>
 <p>我们可以称24为“模”，也就是模为24的情况下，-40，-16，8，32，56是等价的，也就是这些数在模24的情况下都可以写成8。虽说要写32，56什么的也没什么问题，但最简单的8多好看</p>
 <p>所以，我们就不需要拘泥于余数的定义有没有被除数为负数的情况，而是直接认识到它们是等价的</p>
 <p>那除数为负数呢？</p>
 <p>无所谓的，对于一天的时间，减24和加24终究是回到原点，所以模-24和模24是一样的，那我们还不如直接把模数都写成正的，好看也好理解</p>
 <p>至此，为了方便记录这些等式，我们就可以给出定义</p>
-<p>$$<br>a≡b\quad(mod\space n)<br>$$<br>这个式子可以理解为a%n&#x3D;&#x3D;b%n的意思，a与b除以p所得余数相同</p>
+<p><span class="math display">\[
+a≡b\quad(mod\space n)
+\]</span> 这个式子可以理解为a%n==b%n的意思，a与b除以p所得余数相同</p>
 <p>它也可以说成</p>
-<div style="text-align:center;font-weight:bold;">a与b模p同余</div>
-
-<p>其中n就称为“模”或者“模数”（一般来讲，n≠0，毕竟n&#x3D;0求余也没什么意义）</p>
+<div style="text-align:center;font-weight:bold;">
+a与b模p同余
+</div>
+<p>其中n就称为“模”或者“模数”（一般来讲，n≠0，毕竟n=0求余也没什么意义）</p>
 <p>或者说</p>
-<div style="text-align:center;font-weight:bold;">a与b在模p下相同</div>
-
-<p>它有一个<strong>等价</strong>形式<br>$$<br>n|(a-b)<br>$$<br>等等，“|”又是什么东西？</p>
-<p>在式子<br>$$<br>a|b<br>$$<br>中，它一般叫做“a整除b”，可以理解说是b%a&#x3D;&#x3D;0 ，但更准确的定义是<br>$$<br>b&#x3D;ka\quad k∈Z<br>$$<br>毕竟b有可能是负数</p>
-<p>所以上面的式子也就是n整除a-b，或者说，存在一个整数k，使得kn&#x3D;a-b</p>
+<div style="text-align:center;font-weight:bold;">
+a与b在模p下相同
+</div>
+<p>它有一个<strong>等价</strong>形式 <span class="math display">\[
+n|(a-b)
+\]</span> 等等，“|”又是什么东西？</p>
+<p>在式子 <span class="math display">\[
+a|b
+\]</span> 中，它一般叫做“a整除b”，可以理解说是b%a==0 ，但更准确的定义是
+<span class="math display">\[
+b=ka\quad k∈Z
+\]</span> 毕竟b有可能是负数</p>
+<p>所以上面的式子也就是n整除a-b，或者说，存在一个整数k，使得kn=a-b</p>
 <p>说实话一开始我还觉得左边是除数右边是被除数的形式看着难受，但永远不要小看人的适应能力。多看多用，总会习惯</p>
 <p>但是，你有没有发现，明明两种形式都有各自的定义，我却在两者之间强行插上了“等价”二字</p>
 <p>这个加粗不是为了强调，而只是想让你产生怀疑</p>
@@ -65,80 +83,206 @@ if (isPassword) {
 <p>如果你觉得它不证自明，那我猜测你的想法是：a和b应该是能被拆成能整除的部分和不能整除的部分，相减一下，欸，不能整除的部分没了！</p>
 <p>其实证明这个等价也就是这么回事</p>
 <p>先来试试前推后</p>
-<p>由<br>$$<br>a≡b\quad(mod\space n)<br>$$<br>说明存在k<del>1</del>和k<del>2</del>，使得a&#x3D;k<del>1</del>n+p<del>1</del>，b&#x3D;k<del>2</del>n+p<del>2</del>（p<del>1</del>,p<del>2</del>∈[0,n-1]）</p>
-<p>显然的，a对n求余是p<del>1</del>，b对n求余是p<del>2</del>，由上面，我们对同余式的定义可以得到p<del>1</del>&#x3D;p<del>2</del></p>
-<p>那我们就将p<del>1</del>，p<del>2</del>都记为p，即令p&#x3D;p<del>1</del>&#x3D;p<del>2</del></p>
-<p>那么就有<br>$$<br>a-b&#x3D;(k_1n+p-(k_2n+p))&#x3D;n(k_1-k_2)<br>$$<br>说明a-b是n的倍数，即n整除a-b</p>
-<p>现在逆推，由<br>$$<br>n|(a-b)<br>$$<br>也就是<br>$$<br>a-b&#x3D;kn⇨a&#x3D;b+kn<br>$$</p>
-<p>$$<br>a≡b\quad(mod\space n)⇨b+kn≡b\quad(mod\space n)<br>$$</p>
-<p>显然的，(b+kn)%n&#x3D;&#x3D;b%n，因为就是相差整数倍的n，有上面等式成立</p>
+<p>由 <span class="math display">\[
+a≡b\quad(mod\space n)
+\]</span>
+说明存在k<sub>1</sub>和k<sub>2</sub>，使得a=k<sub>1</sub>n+p<sub>1</sub>，b=k<sub>2</sub>n+p<sub>2</sub>（p<sub>1</sub>,p<sub>2</sub>∈[0,n-1]）</p>
+<p>显然的，a对n求余是p<sub>1</sub>，b对n求余是p<sub>2</sub>，由上面，我们对同余式的定义可以得到p<sub>1</sub>=p<sub>2</sub></p>
+<p>那我们就将p<sub>1</sub>，p<sub>2</sub>都记为p，即令p=p<sub>1</sub>=p<sub>2</sub></p>
+<p>那么就有 <span class="math display">\[
+a-b=(k_1n+p-(k_2n+p))=n(k_1-k_2)
+\]</span> 说明a-b是n的倍数，即n整除a-b</p>
+<p>现在逆推，由 <span class="math display">\[
+n|(a-b)
+\]</span> 也就是 <span class="math display">\[
+a-b=kn⇨a=b+kn
+\]</span></p>
+<p><span class="math display">\[
+a≡b\quad(mod\space n)⇨b+kn≡b\quad(mod\space n)
+\]</span></p>
+<p>显然的，(b+kn)%n==b%n，因为就是相差整数倍的n，有上面等式成立</p>
 <p>至此我们证明了两种表达是等价的</p>
-<p>这最后一步的证明也隐含了同余的重要性质：<br>$$<br>a≡a+kn\quad(mod\space n)\quad k∈Z<br>$$<br>这个我觉得没什么必要证明了，从定义就能明白</p>
-<h3 id="2-同余的基本性质"><a href="#2-同余的基本性质" class="headerlink" title="2.同余的基本性质"></a>2.同余的基本性质</h3><p>同余式既然长得像个等式，肯定是因为人们发现它具有等式的一些性质才会这么做，因为这样理解和使用更加便捷</p>
+<p>这最后一步的证明也隐含了同余的重要性质： <span
+class="math display">\[
+a≡a+kn\quad(mod\space n)\quad k∈Z
+\]</span> 这个我觉得没什么必要证明了，从定义就能明白</p>
+<h3 id="同余的基本性质">2.同余的基本性质</h3>
+<p>同余式既然长得像个等式，肯定是因为人们发现它具有等式的一些性质才会这么做，因为这样理解和使用更加便捷</p>
 <p>那就让我们一步步看</p>
-<h4 id="1-自反性"><a href="#1-自反性" class="headerlink" title="1.自反性"></a>1.自反性</h4><p>即<br>$$<br>a≡a\quad(mod\space n)\quad<br>$$<br>任何数都与自身同余，这里不做证明</p>
-<h4 id="2-对称性"><a href="#2-对称性" class="headerlink" title="2.对称性"></a>2.对称性</h4><p>$$<br>a≡b\quad(mod\space n)⇦⇨b≡a\quad(mod\space n)\quad<br>$$</p>
+<h4 id="自反性">1.自反性</h4>
+<p>即 <span class="math display">\[
+a≡a\quad(mod\space n)\quad
+\]</span> 任何数都与自身同余，这里不做证明</p>
+<h4 id="对称性">2.对称性</h4>
+<p><span class="math display">\[
+a≡b\quad(mod\space n)⇦⇨b≡a\quad(mod\space n)\quad
+\]</span></p>
 <p>这里不作证明</p>
-<h4 id="3-传递性"><a href="#3-传递性" class="headerlink" title="3.传递性"></a>3.传递性</h4><p>$$<br>a≡b\quad(mod\space n),b≡c\quad(mod\space n)⇨a≡c\quad(mod\space n)\quad<br>$$</p>
-<p>证明：<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨k_1n&#x3D;(a-b)\newline<br>b≡c\quad(mod\space n)⇨n|(b-c)⇨k_2n&#x3D;(b-c)<br>$$<br>两式相加得<br>$$<br>(k_1+k_2)n&#x3D;a-c⇨n|(a-c)⇨a≡c\quad(mod\space n)<br>$$</p>
-<h4 id="4-加减模数为自身"><a href="#4-加减模数为自身" class="headerlink" title="4.加减模数为自身"></a>4.加减模数为自身</h4><p>第一条就是前面说的<br>$$<br>a≡a+kn\quad(mod\space n)\quad k∈Z<br>$$</p>
-<h4 id="5-左右可同加减（同余式）"><a href="#5-左右可同加减（同余式）" class="headerlink" title="5.左右可同加减（同余式）"></a>5.左右可同加减（同余式）</h4><p>$$<br>a≡b\quad(mod\space n)⇦⇨a+x≡b+x\quad(mod\space n)<br>$$</p>
-<p>证明：可将其化为<br>$$<br>n|a-b⇦⇨n|(a+x)-(b+x)<br>$$</p>
+<h4 id="传递性">3.传递性</h4>
+<p><span class="math display">\[
+a≡b\quad(mod\space n),b≡c\quad(mod\space n)⇨a≡c\quad(mod\space n)\quad
+\]</span></p>
+<p>证明： <span class="math display">\[
+a≡b\quad(mod\space n)⇨n|(a-b)⇨k_1n=(a-b)\newline
+b≡c\quad(mod\space n)⇨n|(b-c)⇨k_2n=(b-c)
+\]</span> 两式相加得 <span class="math display">\[
+(k_1+k_2)n=a-c⇨n|(a-c)⇨a≡c\quad(mod\space n)
+\]</span></p>
+<h4 id="加减模数为自身">4.加减模数为自身</h4>
+<p>第一条就是前面说的 <span class="math display">\[
+a≡a+kn\quad(mod\space n)\quad k∈Z
+\]</span></p>
+<h4 id="左右可同加减同余式">5.左右可同加减（同余式）</h4>
+<p><span class="math display">\[
+a≡b\quad(mod\space n)⇦⇨a+x≡b+x\quad(mod\space n)
+\]</span></p>
+<p>证明：可将其化为 <span class="math display">\[
+n|a-b⇦⇨n|(a+x)-(b+x)
+\]</span></p>
 <p>所以两者均可相互转化。正着转换是加法，反过来就是减法，或者说减一个数就是加上其相反数，一样的方法就能证明，这里省略</p>
-<p>那如果<br>$$<br>a≡b\quad(mod\space n)\newline<br>c≡d\quad(mod\space n)<br>$$<br>会有<br>$$<br>a+c≡b+d\quad(mod\space n)<br>$$<br>吗？</p>
-<p>答案是肯定的<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨jn&#x3D;a-b\newline<br>c≡d\quad(mod\space n)⇨n|(c-d)⇨kn&#x3D;c-d\newline<br>(j+k)n&#x3D;(a+c)-(b+d)⇨n|(a+c)-(b+d)⇨\newline<br>a+c≡b+d\quad(mod\space n)<br>$$<br>两侧相减也是同理，此处不作证明</p>
-<h4 id="6-左右可同乘（同余式）"><a href="#6-左右可同乘（同余式）" class="headerlink" title="6.左右可同乘（同余式）"></a>6.左右可同乘（同余式）</h4><p>$$<br>a≡b\quad(mod\space n)⇨ka≡kb\quad(mod\space n)\quad k∈Z<br>$$</p>
-<p>证明：<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨jn&#x3D;a-b⇨jkn&#x3D;k(a-b)⇨n|k(a-b)⇨n|ka-kb⇨ka≡kb\quad(mod\space n)<br>$$</p>
-<p>同样，也有<br>$$<br>a≡b\quad(mod\space n)\newline<br>c≡d\quad(mod\space n)\newline<br>⇨ac≡bd\quad(mod\space n)<br>$$<br>但证明方式得稍微拐个弯</p>
-<p>尝试：<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨jn&#x3D;a-b\newline<br>c≡d\quad(mod\space n)⇨n|(c-d)⇨kn&#x3D;c-d\newline<br>jkn^2&#x3D;ac-ad-bc+bd<br>$$<br>这样的等式与我们期望的结果不符</p>
+<p>那如果 <span class="math display">\[
+a≡b\quad(mod\space n)\newline
+c≡d\quad(mod\space n)
+\]</span> 会有 <span class="math display">\[
+a+c≡b+d\quad(mod\space n)
+\]</span> 吗？</p>
+<p>答案是肯定的 <span class="math display">\[
+a≡b\quad(mod\space n)⇨n|(a-b)⇨jn=a-b\newline
+c≡d\quad(mod\space n)⇨n|(c-d)⇨kn=c-d\newline
+(j+k)n=(a+c)-(b+d)⇨n|(a+c)-(b+d)⇨\newline
+a+c≡b+d\quad(mod\space n)
+\]</span> 两侧相减也是同理，此处不作证明</p>
+<h4 id="左右可同乘同余式">6.左右可同乘（同余式）</h4>
+<p><span class="math display">\[
+a≡b\quad(mod\space n)⇨ka≡kb\quad(mod\space n)\quad k∈Z
+\]</span></p>
+<p>证明： <span class="math display">\[
+a≡b\quad(mod\space
+n)⇨n|(a-b)⇨jn=a-b⇨jkn=k(a-b)⇨n|k(a-b)⇨n|ka-kb⇨ka≡kb\quad(mod\space n)
+\]</span></p>
+<p>同样，也有 <span class="math display">\[
+a≡b\quad(mod\space n)\newline
+c≡d\quad(mod\space n)\newline
+⇨ac≡bd\quad(mod\space n)
+\]</span> 但证明方式得稍微拐个弯</p>
+<p>尝试： <span class="math display">\[
+a≡b\quad(mod\space n)⇨n|(a-b)⇨jn=a-b\newline
+c≡d\quad(mod\space n)⇨n|(c-d)⇨kn=c-d\newline
+jkn^2=ac-ad-bc+bd
+\]</span> 这样的等式与我们期望的结果不符</p>
 <p>那我们就该重新想想</p>
 <p>我们操作等式的重心一定要在n上吗</p>
 <p>如果说这条性质是正确的，只要我们凑出ad-bc，它等号的对侧一定是能够写成n乘上什么什么的形式</p>
 <p>至于n旁边的数是什么，我们并不关心</p>
-<p>但ad-bc在哪？如果你的注意力比较涣散的话可能就难以发现(其实就是移项避免分配律乱配)，反正我就是这样我是笨蛋😢  我还是问GPT才意识到的</p>
+<p>但ad-bc在哪？如果你的注意力比较涣散的话可能就难以发现(其实就是移项避免分配律乱配)，反正我就是这样我是笨蛋😢
+我还是问GPT才意识到的</p>
 <p>现在我们看不出ad-bc在哪，我也不想看。</p>
-<p>那不然我们就试试找出ad或者bc，相对于我们想要的结果kn&#x3D;ac-bd也就是移一个项的事</p>
+<p>那不然我们就试试找出ad或者bc，相对于我们想要的结果kn=ac-bd也就是移一个项的事</p>
 <p>看看上面，感觉b和d比较好表示，那我们就算算bd</p>
-<p>证明：<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨jn&#x3D;a-b⇨b&#x3D;jn+a\newline<br>c≡d\quad(mod\space n)⇨n|(c-d)⇨kn&#x3D;c-d⇨d&#x3D;kn+c\newline<br>bd&#x3D;jkn^2+jcn+kan+ac⇨(jkn+jc+ka)n&#x3D;bd-ac⇨n|bd-ac\newline<br>⇨ac≡bd\quad(mod\space n)<br>$$<br>你看，这样表示bd确实就是kn+ac的形式，由此就能得证了</p>
-<h4 id="7-除呢？我同除呢？"><a href="#7-除呢？我同除呢？" class="headerlink" title="7.除呢？我同除呢？"></a>7.除呢？我同除呢？</h4><p>拔说了，直接上反例<br>$$<br>4≡2\quad(mod\space 2)<br>$$<br>这个同余式没什么问题，但两侧同除2后<br>$$<br>2≡1\quad(mod\space 2)<br>$$<br>你说这怎么可能嘛</p>
-<p>但也不是所有情况都不能同除<br>$$<br>20≡50\quad(mod\space 3)⇨(同除5)⇨4≡10\quad(mod\space 3)<br>$$<br>20和50模3都余2没什么问题，4和10模3都余1也没问题，同余式仍然成立</p>
+<p>证明： <span class="math display">\[
+a≡b\quad(mod\space n)⇨n|(a-b)⇨jn=a-b⇨b=jn+a\newline
+c≡d\quad(mod\space n)⇨n|(c-d)⇨kn=c-d⇨d=kn+c\newline
+bd=jkn^2+jcn+kan+ac⇨(jkn+jc+ka)n=bd-ac⇨n|bd-ac\newline
+⇨ac≡bd\quad(mod\space n)
+\]</span> 你看，这样表示bd确实就是kn+ac的形式，由此就能得证了</p>
+<h4 id="除呢我同除呢">7.除呢？我同除呢？</h4>
+<p>拔说了，直接上反例 <span class="math display">\[
+4≡2\quad(mod\space 2)
+\]</span> 这个同余式没什么问题，但两侧同除2后 <span
+class="math display">\[
+2≡1\quad(mod\space 2)
+\]</span> 你说这怎么可能嘛</p>
+<p>但也不是所有情况都不能同除 <span class="math display">\[
+20≡50\quad(mod\space 3)⇨(同除5)⇨4≡10\quad(mod\space 3)
+\]</span>
+20和50模3都余2没什么问题，4和10模3都余1也没问题，同余式仍然成立</p>
 <p>并不是所有情况都可以同除，但也不是所有情况不能同除。</p>
 <p>即使如此，<strong>我们一般也不认为同余具有除法性质</strong></p>
-<p>但我觉得同余两侧同除一个数会发生什么是一个很好玩的思维游戏<br>$$<br>a≡b\quad(mod\space n)⇨n|(a-b)⇨kn&#x3D;a-b⇨\frac{kn}{m}&#x3D;\frac{a-b}{m}<br>$$</p>
+<p>但我觉得同余两侧同除一个数会发生什么是一个很好玩的思维游戏 <span
+class="math display">\[
+a≡b\quad(mod\space n)⇨n|(a-b)⇨kn=a-b⇨\frac{kn}{m}=\frac{a-b}{m}
+\]</span></p>
 <p>当然，这里m能够整除a和b，以后除法默认可整除</p>
-<p>因为(a-b)&#x2F;m是整数，所以<strong>kn&#x2F;m也是整数</strong></p>
-<p>或者也可以如此说明kn&#x2F;m是整数<br>$$<br>kn&#x3D;a-b⇨a&#x3D;kn+b\newline<br>\frac{a}{m}&#x3D;\frac{b+kn}{m}&#x3D;\frac{b}{m}+\frac{kn}{m}<br>$$<br>虽然kn&#x2F;m是板上钉钉的事，但我总觉得这个表达形式让我心痒痒</p>
+<p>因为(a-b)/m是整数，所以<strong>kn/m也是整数</strong></p>
+<p>或者也可以如此说明kn/m是整数 <span class="math display">\[
+kn=a-b⇨a=kn+b\newline
+\frac{a}{m}=\frac{b+kn}{m}=\frac{b}{m}+\frac{kn}{m}
+\]</span> 虽然kn/m是板上钉钉的事，但我总觉得这个表达形式让我心痒痒</p>
 <p>m是a和b的公因数，也就是b和kn+b的公因数</p>
 <p>m确实和k有这么一层关系，但总觉得，很不直观</p>
-<p>要不然换种表达吧<br>$$<br>da≡db\quad(mod\space n)⇨n|da-db⇨kn&#x3D;d(a-b)⇨\frac{kn}{d}&#x3D;a-b<br>$$<br>这次我们不控制差值了，而是控制公因数d</p>
-<p>也就是<br>$$<br>k&#x3D;\frac{d(a-b)}{n}<br>$$<br>是不是直观多了</p>
+<p>要不然换种表达吧 <span class="math display">\[
+da≡db\quad(mod\space n)⇨n|da-db⇨kn=d(a-b)⇨\frac{kn}{d}=a-b
+\]</span> 这次我们不控制差值了，而是控制公因数d</p>
+<p>也就是 <span class="math display">\[
+k=\frac{d(a-b)}{n}
+\]</span> 是不是直观多了</p>
 <p>现在回到正题，什么时候能整除，什么时候不能整除？</p>
-<p>如果要<br>$$<br>a≡b\quad(mod\space n)⇦⇨n|(a-b)⇦⇨\frac{k}{d}∈Z<br>$$<br>说明当d能整除k的时候两侧可以同除</p>
+<p>如果要 <span class="math display">\[
+a≡b\quad(mod\space n)⇦⇨n|(a-b)⇦⇨\frac{k}{d}∈Z
+\]</span> 说明当d能整除k的时候两侧可以同除</p>
 <p>那如果我不听话，硬是同除呢？</p>
-<p>kn&#x2F;d是整数，但d不整除k，那我们可以将其看作<br>$$<br>\frac{kn}{d}&#x3D;\frac{gcd(k,d)k_1n}{gcd(k,d)d_1}&#x3D;k_1\frac{n}{d_1}\newline<br>其中gcd(a,b,…)表示括号内所有数的最大公因数\newline<br>令k&#x3D;gcd(k,d)k_1\space,\space d&#x3D;gcd(k,d)d_1<br>$$<br>因为kn&#x2F;d是整数，k<del>1</del>是整数，那必然有n&#x2F;d<del>1</del>是整数</p>
-<p>这样就可以写成<br>$$<br>da≡db\quad(mod\space n)⇨a≡b\quad(mod\space \frac{n}{d_1})⇨a≡b\quad(mod\space \frac{gcd(k,d)n}{d})⇨a≡b\quad(mod\space \frac{gcd(\frac{d(a-b)}{n},d)n}{d})<br>$$<br>显然地有，当d整除k，有d<del>1</del>&#x3D;1，因为这时候gcd(k,d)&#x3D;d</p>
+<p>kn/d是整数，但d不整除k，那我们可以将其看作 <span
+class="math display">\[
+\frac{kn}{d}=\frac{gcd(k,d)k_1n}{gcd(k,d)d_1}=k_1\frac{n}{d_1}\newline
+其中gcd(a,b,...)表示括号内所有数的最大公因数\newline
+令k=gcd(k,d)k_1\space,\space d=gcd(k,d)d_1
+\]</span>
+因为kn/d是整数，k<sub>1</sub>是整数，那必然有n/d<sub>1</sub>是整数</p>
+<p>这样就可以写成 <span class="math display">\[
+da≡db\quad(mod\space n)⇨a≡b\quad(mod\space
+\frac{n}{d_1})⇨a≡b\quad(mod\space
+\frac{gcd(k,d)n}{d})⇨a≡b\quad(mod\space
+\frac{gcd(\frac{d(a-b)}{n},d)n}{d})
+\]</span>
+显然地有，当d整除k，有d<sub>1</sub>=1，因为这时候gcd(k,d)=d</p>
 <p>所以这个推理是对任意d成立的，因为d要么整除k，要么不整除k</p>
 <p>但我觉得这个式子可能没什么实际价值，太抽象了，单纯推着玩。</p>
 <p>同时我们也可以发现，表达法多种多样，毕竟你只要找到一个a-b能被一个数整除，你可以写出类似的式子</p>
-<p>像gpt喜欢说<br>$$<br>da≡db\quad(mod\space n)⇨a≡b\quad(mod\space \frac{n}{gcd(d,n)})<br>$$<br>然后说，当d和n互质时，两侧就可以同除</p>
-<p>证法是类似的，这个推理也是正确的<br>$$<br>\frac{kn}{d}&#x3D;\frac{gcd(n,d)n_2k}{gcd(n,d)d_2}&#x3D;\frac{k}{d_2}n_2<br>$$<br>也就是说，当n和d互质时，两侧同除d是能保证模数n不变的</p>
-<p>因为n和d互质，那只能让d整除k才能保证kn&#x2F;d是整数</p>
+<p>像gpt喜欢说 <span class="math display">\[
+da≡db\quad(mod\space n)⇨a≡b\quad(mod\space \frac{n}{gcd(d,n)})
+\]</span> 然后说，当d和n互质时，两侧就可以同除</p>
+<p>证法是类似的，这个推理也是正确的 <span class="math display">\[
+\frac{kn}{d}=\frac{gcd(n,d)n_2k}{gcd(n,d)d_2}=\frac{k}{d_2}n_2
+\]</span> 也就是说，当n和d互质时，两侧同除d是能保证模数n不变的</p>
+<p>因为n和d互质，那只能让d整除k才能保证kn/d是整数</p>
 <p>那反过来想想，如果两侧除以d后，在模数不变的情况下同余式仍成立</p>
 <p>可以说明d一定整除k吗？可以说明d和n一定互质吗？</p>
-<p>前者是可以的，因为a-b&#x3D;kn&#x2F;d，由同余式的定义可知k&#x2F;d一定是整数</p>
-<p>对于后者，我们已经知道了k&#x2F;d，那么一定会有gcd(n,d)&#x3D;1？不见得</p>
+<p>前者是可以的，因为a-b=kn/d，由同余式的定义可知k/d一定是整数</p>
+<p>对于后者，我们已经知道了k/d，那么一定会有gcd(n,d)=1？不见得</p>
 <p>想证伪最简单的办法就是举反例</p>
 <p>找k，n，d使得d整除k并且n和d有公因数</p>
-<p>不妨令k&#x3D;4，n&#x3D;6，d&#x3D;2，那么kn&#x3D;24&#x3D;da-db</p>
-<p>也就是da&#x3D;db+24，不妨令b&#x3D;1，有<br>$$<br>26≡2\quad(mod\space 6)<br>$$<br>这个同余式没有问题</p>
-<p>尝试左右两侧同除2<br>$$<br>13≡2\quad(mod\space 6)<br>$$<br>仍没有问题，但是gcd(n,d)≠1</p>
+<p>不妨令k=4，n=6，d=2，那么kn=24=da-db</p>
+<p>也就是da=db+24，不妨令b=1，有 <span class="math display">\[
+26≡2\quad(mod\space 6)
+\]</span> 这个同余式没有问题</p>
+<p>尝试左右两侧同除2 <span class="math display">\[
+13≡2\quad(mod\space 6)
+\]</span> 仍没有问题，但是gcd(n,d)≠1</p>
 <p>也就是，同余式两侧有公因数d的情况下</p>
 <p>d整除k是同余式两侧同除d但模数不变后同余式仍然成立的充要条件</p>
 <p>d和n互质是同余式两侧同除d但模数不变后同余式仍然成立的充分不必要条件</p>
 <p>其实我猜测同除这件事可能跟高中学的向量运算比较相似，既没有这个性质，平时应该遇不上这种问题。就像我们平时见不到向量除向量一样，我们应该也见不到同余除以同余，这时由其性质决定的，因为没有什么实际含义，所以没有对应的情况能表达出这种东西</p>
-<h4 id="8-左右可同求幂"><a href="#8-左右可同求幂" class="headerlink" title="8.左右可同求幂"></a>8.左右可同求幂</h4><p>像一般等式一样<br>$$<br>a&#x3D;b⇨a^c&#x3D;b^c<br>$$<br>我们也希望有<br>$$<br>a≡b\quad(mod\space n)⇨a^c≡b^c\quad(mod\space n)<br>$$<br>其实这个问题很简单，因为我们已经知道了<br>$$<br>a≡b\quad(mod\space n)\newline<br>c≡d\quad(mod\space n)\newline<br>⇨ac≡bd\quad(mod\space n)<br>$$<br>那剩下就是归纳法的事了</p>
+<h4 id="左右可同求幂">8.左右可同求幂</h4>
+<p>像一般等式一样 <span class="math display">\[
+a=b⇨a^c=b^c
+\]</span> 我们也希望有 <span class="math display">\[
+a≡b\quad(mod\space n)⇨a^c≡b^c\quad(mod\space n)
+\]</span> 其实这个问题很简单，因为我们已经知道了 <span
+class="math display">\[
+a≡b\quad(mod\space n)\newline
+c≡d\quad(mod\space n)\newline
+⇨ac≡bd\quad(mod\space n)
+\]</span> 那剩下就是归纳法的事了</p>
 <p>证明：</p>
-<p>显然有<br>$$<br>a≡b\quad(mod\space n)⇨a^2≡b^2\quad(mod\space n)<br>$$<br>并且有<br>$$<br>若a^k≡b^k\quad(mod\space n)\newline<br>则a^{k+1}≡b^{k+1}\quad(mod\space n)<br>$$<br>所以<br>$$<br>a≡b\quad(mod\space n)⇨a^c≡b^c\quad(mod\space n)<br>$$<br>得证</p>
-<h3 id="结"><a href="#结" class="headerlink" title="结"></a>结</h3><p>同余式常用的基本性质大致就这些。</p>
+<p>显然有 <span class="math display">\[
+a≡b\quad(mod\space n)⇨a^2≡b^2\quad(mod\space n)
+\]</span> 并且有 <span class="math display">\[
+若a^k≡b^k\quad(mod\space n)\newline
+则a^{k+1}≡b^{k+1}\quad(mod\space n)
+\]</span> 所以 <span class="math display">\[
+a≡b\quad(mod\space n)⇨a^c≡b^c\quad(mod\space n)
+\]</span> 得证</p>
+<h3 id="结">结</h3>
+<p>同余式常用的基本性质大致就这些。</p>
 <p>像同除，同开跟，同取对数之类的运算一般不会去深究，因为一般不会出现，而且这些运算容易产生分数和无理数</p>
-</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/02/congruence-modulo/">https://red-ice-drhi.github.io/2024/11/02/congruence-modulo/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/zip-encrypting/"><i class="fas fa-angle-left">&nbsp;</i><span>zip破解与伪加密</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/10/25/pictures-in-HEX/"><span>十六进制下的图片</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2024/11/02/congruence-modulo/">https://red-ice-drhi.github.io/2024/11/02/congruence-modulo/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/14/steganography/"><i class="fas fa-angle-left">&nbsp;</i><span>一些隐写术</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2024/11/02/zip-encrypting/"><span>zip破解与伪加密</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
