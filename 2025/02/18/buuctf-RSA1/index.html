@@ -20,7 +20,7 @@ if (isPassword) {
   valine: {},
   twikoo: {},
 }</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RedIce's Blog" type="application/atom+xml">
-</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">1.题目内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">2.尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BC%9A%E7%9C%8B%E7%AD%94%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">3.不会，看答案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E6%8F%90%E4%BE%9B"><span class="toc-number">3.1.</span> <span class="toc-text">定理提供</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.中国剩余定理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">1.内容</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">2.证明</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.3.</span> <span class="toc-text">3.欧几里得算法</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color1"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color8"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color7"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">[buuctf]-RSA1</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2025-02-18 | 更新于 2025-02-19</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>由于这题难到我了，所以做个md来记录</p>
+</head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">1.题目内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">2.尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BC%9A%E7%9C%8B%E7%AD%94%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">3.不会，看答案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E6%8F%90%E4%BE%9B"><span class="toc-number">3.1.</span> <span class="toc-text">定理提供</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.中国剩余定理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">1.内容</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">2.证明</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.3.</span> <span class="toc-text">3.欧几里得算法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.4.</span> <span class="toc-text">4.扩展欧几里得算法</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">RI</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color7"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color8"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color7"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">10</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">RedIce's Blog</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">[buuctf]-RSA1</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2025-02-18 | 更新于 2025-02-20</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"></div><div class="button-hover tags"></div></div></div><div class="main-content"><p>由于这题难到我了，所以做个md来记录</p>
 <h3 id="题目内容"><a
 href="%5BBUUCTF在线评测%5D(https://buuoj.cn/challenges#RSA1)">1.题目内容</a></h3>
 <p><span class="math display">\[
@@ -194,18 +194,54 @@ m_t)\newline
 <p>这东西是个求最大公约数的技巧，它的内容就是 <span
 class="math display">\[
 gcd(a,b)=gcd(a,b\%a)\newline
+(默认a，b均大于等于0吧，我不太会讨论负数证明)\newline
 求两数的最大公约数可以用求余来缩小数字
 \]</span></p>
-<p>证明： <span class="math display">\[
-记gcd(a,b)=m\newline
-当a≥b时，b\%a=b，题设等式成立
-当a&lt;b\newline
-则有pm=a,qm=b且p&lt;q\newline
-b\%a=b-ia=qm-ipm=(q-ip)m\newline
-所以m是a和b\%a的公约数\newline
-\]</span> 那现在我们再问，m是a和b%a的最大公约数吗？ <span
+<p>在证明这个等式之前，我们先证另一个东西 <span class="math display">\[
+若a&gt;0,b&gt;0,k∈Z且b+ka&gt;0\newline
+则(a,b)和(a,b+ka)一定拥有相同的公因数
+\]</span> 这个并不复杂，顺着题目来就行</p>
+<p>证明 <span class="math display">\[
+设表示a和b所有的公因数组成集合A，a和b+ka所有的公因数组成集合B\newline
+我们要证明A和B等价\newline
+那就来证A的元素一定在B里面，同时B的元素一定在A里面\newline
+取∀p∈A,q∈B\newline
+现证明p∈B\newline
+有a≡0\quad(mod\space p)⇨ka≡0\quad(mod\space
+p)（同余两侧可以同乘非正数），又b≡0\quad(mod\space p)\newline
+所以b+ka≡0\quad(mod\space p)\newline
+即b同时是a和b+ka的因数，即a和b+ka的公因数，得p∈B\newline
+\newline
+现证明q∈A\newline
+其实套用上面就好\newline
+p∈B说明(a,b)的公因数一定是(a,b+ka)的公因数\newline
+那么(a,b+ka)的公因数一定是(a,(b+ka)+(-ka)=b)的公因数\newline
+即q∈A\newline
+由此，命题得证
+\]</span>
+虽然直接证欧几里得算法也可以，但是直接证不仅会麻烦一些，还会失去一个获得好用的命题的机会（我不知道这个命题有没有被命名成什么定理）</p>
+<p>现在我们就利用这个引理来证明欧几里得算法</p>
+<p>证明: <span class="math display">\[
+当a=b=0时gcd(a,b)没有意义，不予讨论，后面的分类讨论均默认排除a=b=0\newline
+当a&gt;b时,b\%a=b，所以gcd(a,b)=gcd(a,b\%a)\newline
+当a|b时(a|b则说明a≤b),gcd(a,b)=a\newline
+同时b\%a=0，所以gcd(a,b\%a)=gcd(a,0)=a=gcd(a,b)\newline
+(在a≠0时，gcd(a,0)实际上是|a|,毕竟任何数都可以整除0，或a|0,或0\%a=a)\newline
+当a&lt;b且a∤b时，b\%a一定可以写成b-ka&gt;0的形式\newline
+所以gcd(a,b)一定是a和b\%a的公因数\newline
+同时gcd(a,b\%a)一定是a和b的公因数
+\]</span> 现在我们还差证明“最大”这个词 <span class="math display">\[
+gcd(a,b\%a)是a和b的公因数⇨gcd(a,b\%a)≤gcd(a,b)\newline
+gcd(a,b)是a和b\%a的公因数⇨gcd(a,b)≤gcd(a,b\%a)\newline
+所以gcd(a,b)=gcd(a,b\%a)\newline
+、
+\]</span> 如此我们就证明了欧几里得算法是正确的</p>
+<p>但说实话前面的步骤都算简单，只有最后三句的证明是真的觉得“这才是骚操作”，问AI的时候真的横看竖看都不理解，这里的证明过程都反反复复写了好几次，就是因为难理解，但现在理解了写起来就简单了</p>
+<h6 id="扩展欧几里得算法">4.扩展欧几里得算法</h6>
+<p>在说明这个之前，我们要先提一个东西——贝祖等式 <span
 class="math display">\[
-因为m是a和b\%a的公约数\newline
-所以m≤gcd(a,b\%a)\newline
-\]</span> ...待续</p>
+ax+by=gcd(a,b)
+\]</span> 对于任意两个整数a，b，一定存在一组整数x，y使等式成立</p>
+<p>但一样的，我不想讨论负数，所以默认a，b≥0</p>
+<p>...待续</p>
 </div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">RI</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://red-ice-drhi.github.io/2025/02/18/buuctf-RSA1/">https://red-ice-drhi.github.io/2025/02/18/buuctf-RSA1/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本站点所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Red-Ice-DRHi.github.io">RedIce's Blog</a>！</span></div></div></article><div id="pagination"><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2025/01/24/Fermat's-little-theorem/"><span>费马小定理</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2025 By RI</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
